@@ -14,48 +14,45 @@ class Now(ABCDate):
     @property
     def status(self) -> str:
         """Ясно, пасмурно, сильный дождь и т. д."""
-        return self._build_result(
-            '//div[contains(@class,"now__desc")]//text()'
-        )
+        return self._build_result('//div[contains(@class,"now-desc")]/text()')
 
     @property
     def temperature(self) -> str:
         """Температура, °C."""
         return self._build_result(
-            '//div[contains(@class,"now__weather")]'
-            + '//span[contains(@class,"unit_temperature_c")]//text()'
+            '//div[contains(@class,"now-weather")]'
+            + '/span[contains(@class,"unit_temperature_c")]//text()'
         )
 
     @property
     def real_feel(self) -> str:
         """Температура по ощущению, °C."""
         return self._build_result(
-            '//div[contains(@class,"now__feel")]'
-            + '/span[contains(@class,"unit_temperature_c")]/text()'
+            '//div[contains(@class,"now-feel")]'
+            + '/*[contains(@class,"unit_temperature_c")]/text()'
         )
 
     @property
     def sunrise(self) -> str:
         """Заход."""
         return self._build_result(
-            '//div[contains(@class,"nowastro__item_sunrise")]'
-            + '/div[contains(@class,"nowastro__time")]/text()'
+            '//div[contains(@class,"now-astro-sunrise")]'
+            + '/div[contains(@class,"time")]/text()'
         )
 
     @property
     def sunset(self) -> str:
         """Восход."""
         return self._build_result(
-            '//div[contains(@class,"nowastro__item_sunset")]'
-            + '/div[contains(@class,"nowastro__time")]/text()'
+            '//div[contains(@class,"now-astro-sunset")]'
+            + '/div[contains(@class,"time")]/text()'
         )
 
     @property
     def wind_speed(self) -> str:
         """Скорость ветра, м/с."""
         return self._build_result(
-            '//div[contains(@class,"unit_wind_m_s")]'
-            + '//div[contains(@class,"nowinfo__value")]/text()'
+            '//div[contains(@class,"unit_wind_m_s")]/text()'
         )
 
     @property
@@ -63,41 +60,41 @@ class Now(ABCDate):
         """Направление ветра."""
         return self._build_result(
             '//div[contains(@class,"unit_wind_m_s")]'
-            + '//div[contains(@class,"nowinfo__measure")]/text()[last()]'
+            + '/div[contains(@class,"item-measure")]/div[last()]/text()'
         )
 
     @property
     def pressure(self) -> str:
         """Давление, мм рт. ст."""
         return self._build_result(
-            '//div[contains(@class,"unit_pressure_mm_hg_atm")]'
-            + '//div[contains(@class,"nowinfo__value")]/text()'
+            '//div[contains(@class,"unit_pressure_mm_hg_atm")]/text()'
         )
 
     @property
     def humidity(self) -> str:
         """Влажность, %."""
         return self._build_result(
-            '//div[contains(@class,"nowinfo__item_humidity")]'
-            + '//div[contains(@class,"nowinfo__value")]/text()'
+            '//div[contains(@class,"humidity")]'
+            + '/div[contains(@class,"value")]/text()'
         )
 
     @property
     def gm_activity(self) -> str:
         """Геомагнитная активность, Кп-индекс."""
         return self._build_result(
-            '//div[contains(@class,"nowinfo__item_gm")]'
-            + '//div[contains(@class,"nowinfo__value")]/text()'
+            '//div[contains(@class,"gm")]'
+            + '//div[contains(@class,"value")]/text()'
         )
 
     @property
     def water(self) -> str:
         """Температура воды, °C."""
         return self._build_result(
-            '//div[contains(@class,"nowinfo__item_water")]'
-            + '//div[contains(@class,"unit_temperature_c")]'
-            + '/div[contains(@class,"nowinfo__value")]/text()'
+            '//div[contains(@class,"water")]'
+            + '//div[contains(@class,"unit_temperature_c")]/text()'
         )
 
     def _build_result(self, xpath: str) -> str:
-        return "".join(normalize_str(el) for el in self._tree.xpath(xpath))
+        return normalize_str(
+            "".join(self._tree.xpath(f'//div[contains(@class,"now")]{xpath}'))
+        )
