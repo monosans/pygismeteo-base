@@ -2,7 +2,7 @@
 
 ## Зависимости
 
-Мы используем [poetry] (https://github.com/python-poetry/poetry) для управления зависимостями.
+Мы используем [poetry](https://github.com/python-poetry/poetry) для управления зависимостями.
 
 Чтобы установить их, вам нужно запустить команду install:
 
