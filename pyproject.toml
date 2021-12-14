@@ -18,16 +18,13 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6.2"
-lxml = "^4.6.3"
+pydantic = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"
 isort = "^5.10.1"
-
 mypy = "^0.910"
-lxml-stubs = "^0.3.0"
-
-pre-commit = "^2.15.0"
+pre-commit = "^2.16.0"
 
 [tool.black]
 line-length = 79
@@ -36,6 +33,9 @@ skip-magic-trailing-comma = true
 [tool.isort]
 profile = "black"
 line_length = 79
+
+[tool.mypy]
+strict = true
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
