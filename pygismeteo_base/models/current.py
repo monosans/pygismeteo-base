@@ -59,17 +59,17 @@ class Radiation(_BaseModel):
 
 
 class Comfort(_BaseModel):
-    c: int = _Field(..., alias="C")
+    c: float = _Field(..., alias="C")
     f: float = _Field(..., alias="F")
 
 
 class Water(_BaseModel):
-    c: int = _Field(..., alias="C")
+    c: float = _Field(..., alias="C")
     f: float = _Field(..., alias="F")
 
 
 class Air(_BaseModel):
-    c: int = _Field(..., alias="C")
+    c: float = _Field(..., alias="C")
     f: float = _Field(..., alias="F")
 
 
@@ -92,6 +92,7 @@ class Model(_BaseModel):
     wind: Wind
     cloudiness: Cloudiness
     date: Date
+    phenomenon: _Optional[int]
     radiation: Radiation
     city: int
     kind: str

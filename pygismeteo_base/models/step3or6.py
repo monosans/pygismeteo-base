@@ -66,7 +66,7 @@ class Comfort(_BaseModel):
 
 
 class Water(_BaseModel):
-    c: int = _Field(..., alias="C")
+    c: float = _Field(..., alias="C")
     f: float = _Field(..., alias="F")
 
 

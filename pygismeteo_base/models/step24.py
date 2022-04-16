@@ -82,13 +82,13 @@ class Comfort(_BaseModel):
 
 
 class Max1(_BaseModel):
-    c: _Optional[int] = _Field(..., alias="C")
-    f: _Optional[float] = _Field(..., alias="F")
+    c: float = _Field(..., alias="C")
+    f: float = _Field(..., alias="F")
 
 
 class Min1(_BaseModel):
-    c: int = _Field(..., alias="C")
-    f: int = _Field(..., alias="F")
+    c: float = _Field(..., alias="C")
+    f: float = _Field(..., alias="F")
 
 
 class Water(_BaseModel):
