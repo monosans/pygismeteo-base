@@ -106,7 +106,7 @@ class ModelItem(_BaseModel):
 class Model(_BaseModel):
     __root__: _List[ModelItem]
 
-    def __iter__(self) -> _Iterator[ModelItem]:  # type: ignore
+    def __iter__(self) -> _Iterator[ModelItem]:  # type: ignore[override]
         return iter(self.__root__)
 
     def __getitem__(self, item: int) -> ModelItem:
