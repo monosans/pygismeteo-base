@@ -14,9 +14,9 @@ class SubDistrict(BaseModel):
 
 
 class Country(BaseModel):
-    name: str
+    name: Optional[str]
     code: str
-    name_p: str = Field(..., alias="nameP")
+    name_p: Optional[str] = Field(..., alias="nameP")
 
 
 class Model(BaseModel):
@@ -24,7 +24,7 @@ class Model(BaseModel):
     id: int
     sub_district: Optional[SubDistrict]
     url: str
-    name_p: str = Field(..., alias="nameP")
-    name: str
+    name_p: Optional[str] = Field(..., alias="nameP")
+    name: Optional[str]
     kind: str
     country: Country
