@@ -1,45 +1,35 @@
-# -*- coding: utf-8 -*-
-from typing import Iterator as _Iterator
-from typing import List as _List
-from typing import Optional as _Optional
+from typing import List, Optional
 
-from pydantic import BaseModel as _BaseModel
-from pydantic import Field as _Field
+from pydantic import BaseModel, Field
 
 
-class District(_BaseModel):
+class District(BaseModel):
     name: str
-    name_p: str = _Field(..., alias="nameP")
+    name_p: str = Field(..., alias="nameP")
 
 
-class SubDistrict(_BaseModel):
+class SubDistrict(BaseModel):
     name: str
-    name_p: str = _Field(..., alias="nameP")
+    name_p: str = Field(..., alias="nameP")
 
 
-class Country(_BaseModel):
-    name: _Optional[str]
+class Country(BaseModel):
+    name: str
     code: str
-    name_p: _Optional[str] = _Field(..., alias="nameP")
+    name_p: str = Field(..., alias="nameP")
 
 
-class ModelItem(_BaseModel):
-    district: _Optional[District]
+class ModelItem(BaseModel):
+    district: Optional[District]
     id: int
-    sub_district: _Optional[SubDistrict]
+    sub_district: Optional[SubDistrict]
     url: str
-    name_p: _Optional[str] = _Field(..., alias="nameP")
-    name: _Optional[str]
+    name_p: str = Field(..., alias="nameP")
+    name: str
     distance: float
     kind: str
     country: Country
 
 
-class Model(_BaseModel):
-    __root__: _List[ModelItem]
-
-    def __iter__(self) -> _Iterator[ModelItem]:  # type: ignore[override]
-        return iter(self.__root__)
-
-    def __getitem__(self, item: int) -> ModelItem:
-        return self.__root__[item]
+class Model(BaseModel):
+    __root__: List[ModelItem]

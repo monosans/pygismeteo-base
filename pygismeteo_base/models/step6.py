@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
@@ -7,7 +7,7 @@ class Precipitation(BaseModel):
     type_ext: Optional[int]
     intensity: int
     correction: Optional[bool]
-    amount: Optional[float]
+    amount: float
     duration: int
     type: int
 
@@ -19,7 +19,7 @@ class Pressure(BaseModel):
 
 
 class Humidity(BaseModel):
-    percent: Optional[int]
+    percent: int
 
 
 class Direction(BaseModel):
@@ -45,8 +45,8 @@ class Cloudiness(BaseModel):
 
 class Date(BaseModel):
     utc: str = Field(..., alias="UTC")
-    local: str
     time_zone_offset: int
+    local: str
     hr_to_forecast: Optional[int]
     unix: int
 
@@ -81,7 +81,7 @@ class Description(BaseModel):
     full: str
 
 
-class Model(BaseModel):
+class ModelItem(BaseModel):
     precipitation: Precipitation
     pressure: Pressure
     humidity: Humidity
@@ -97,3 +97,7 @@ class Model(BaseModel):
     storm: bool
     temperature: Temperature
     description: Description
+
+
+class Model(BaseModel):
+    __root__: List[ModelItem]

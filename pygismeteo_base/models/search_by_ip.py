@@ -1,32 +1,30 @@
-# -*- coding: utf-8 -*-
-from typing import Optional as _Optional
+from typing import Optional
 
-from pydantic import BaseModel as _BaseModel
-from pydantic import Field as _Field
+from pydantic import BaseModel, Field
 
 
-class District(_BaseModel):
+class District(BaseModel):
     name: str
-    name_p: str = _Field(..., alias="nameP")
+    name_p: str = Field(..., alias="nameP")
 
 
-class SubDistrict(_BaseModel):
+class SubDistrict(BaseModel):
     name: str
-    name_p: str = _Field(..., alias="nameP")
+    name_p: str = Field(..., alias="nameP")
 
 
-class Country(_BaseModel):
-    name: _Optional[str]
+class Country(BaseModel):
+    name: str
     code: str
-    name_p: _Optional[str] = _Field(..., alias="nameP")
+    name_p: str = Field(..., alias="nameP")
 
 
-class Model(_BaseModel):
-    district: _Optional[District]
+class Model(BaseModel):
+    district: Optional[District]
     id: int
-    sub_district: _Optional[SubDistrict]
+    sub_district: Optional[SubDistrict]
     url: str
-    name_p: _Optional[str] = _Field(..., alias="nameP")
-    name: _Optional[str]
+    name_p: str = Field(..., alias="nameP")
+    name: str
     kind: str
     country: Country

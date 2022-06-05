@@ -1,47 +1,50 @@
-# -*- coding: utf-8 -*-
 from ipaddress import IPv4Address
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, PositiveInt
 
-import pygismeteo_base
+from pygismeteo_base import types
 
 
 class Settings(BaseModel):
-    lang: Optional[pygismeteo_base.types.LANG]
+    lang: Optional[types.Lang]
     token: Optional[str]
 
     class Config:
         anystr_strip_whitespace = True
+        validate_assignment = True
 
 
-class Coordinates(BaseModel):
+class ImmutableModel(BaseModel):
+    class Config:
+        allow_mutation = False
+        anystr_strip_whitespace = True
+
+
+class Coordinates(ImmutableModel):
     latitude: float = Field(..., ge=-90, le=90)
     longitude: float = Field(..., ge=-180, le=180)
 
 
-class Limit(BaseModel):
+class SearchLimit(ImmutableModel):
     __root__: int = Field(..., ge=1, le=36)
 
 
-class IPAddress(BaseModel):
+class IPAddress(ImmutableModel):
     __root__: IPv4Address
 
 
-class Query(BaseModel):
+class Query(ImmutableModel):
     __root__: str
 
-    class Config:
-        anystr_strip_whitespace = True
+
+class LocalityID(ImmutableModel):
+    __root__: PositiveInt
 
 
-class LocalityID(BaseModel):
-    __root__: int
-
-
-class Days3to10(BaseModel):
-    __root__: int = Field(..., ge=3, le=10)
-
-
-class Days1to10(BaseModel):
+class Step3Days(ImmutableModel):
     __root__: int = Field(..., ge=1, le=10)
+
+
+class Step6or24Days(ImmutableModel):
+    __root__: int = Field(..., ge=3, le=10)

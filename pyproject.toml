@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pygismeteo-base"
-version = "2.3.0"
+version = "3.0.0"
 description = "Base for pygismeteo and aiopygismeteo"
 authors = ["monosans <hsyqixco@protonmail.com>"]
 license = "MIT"
@@ -10,21 +10,19 @@ classifiers = [
     "Intended Audience :: Developers",
     "Natural Language :: Russian",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.6",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Typing :: Typed",
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6.2"
-pydantic = "^1.8"
+python = "^3.7"
+pydantic = "^1.9"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3"
 isort = "^5.10"
 mypy = "^0.960"
-pre-commit = "^2.17"
+pre-commit = "^2.19"
 
 [tool.black]
 line-length = 79
