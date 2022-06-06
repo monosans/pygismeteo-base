@@ -1,10 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from typing import Any, Type, Union
 
 from pygismeteo_base import validators
 
 
-class PeriodMixin(ABC):
+class PeriodMixin(metaclass=ABCMeta):
     __slots__ = ()
 
     @property

@@ -1,10 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from typing import Tuple, Type, Union
 
 from pygismeteo_base import types, validators
 
 
-class PeriodABC(ABC):
+class PeriodABC(metaclass=ABCMeta):
     __slots__ = ()
 
     @property
