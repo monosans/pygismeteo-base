@@ -280,7 +280,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "8412fde66ba7225b5eac4181592422f14aa01063eba969d8e3561c618fc7502d"
+content-hash = "5b65eb9615da2db2e40f93a7255116cf5dfeba4ce3cdbb73bbe6182fb3b0a8ae"
 
 [metadata.files]
 black = [
