@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pygismeteo_base.models import (
     current,
     search_by_coordinates,

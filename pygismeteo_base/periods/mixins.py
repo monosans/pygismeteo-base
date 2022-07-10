@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Tuple, Type
 
 from pygismeteo_base import models, types, validators
