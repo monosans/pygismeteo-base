@@ -1,12 +1,10 @@
 from __future__ import annotations
 
-from typing import List, Optional
-
 from pydantic import BaseModel, Field
 
 
 class Precipitation(BaseModel):
-    type_ext: Optional[int]
+    type_ext: int | None
     intensity: int
     amount: float
     type: int
@@ -60,8 +58,8 @@ class Date(BaseModel):
 
 
 class Radiation(BaseModel):
-    max: Optional[int]
-    max_index: Optional[int]
+    max: int | None
+    max_index: int | None
 
 
 class Max(BaseModel):
@@ -134,9 +132,9 @@ class Min3(BaseModel):
 
 
 class Avg1(BaseModel):
-    km_h: Optional[int]
-    m_s: Optional[int]
-    mi_h: Optional[int]
+    km_h: int | None
+    m_s: int | None
+    mi_h: int | None
 
 
 class Speed(BaseModel):
@@ -146,18 +144,18 @@ class Speed(BaseModel):
 
 
 class Max4(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: int | None
+    scale_8: int | None
 
 
 class Min4(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: int | None
+    scale_8: int | None
 
 
 class Avg2(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: int | None
+    scale_8: int | None
 
 
 class Direction(BaseModel):
@@ -179,10 +177,10 @@ class ModelItem(BaseModel):
     description: Description
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int]
+    phenomenon: int | None
     radiation: Radiation
     city: int
-    kind: Optional[str]
+    kind: str | None
     storm: bool
     temperature: Temperature
     wind: Wind
@@ -190,4 +188,4 @@ class ModelItem(BaseModel):
 
 
 class Model(BaseModel):
-    __root__: List[ModelItem]
+    __root__: list[ModelItem]

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from ipaddress import IPv4Address
-from typing import Optional
 
 from pydantic import BaseModel, Field, PositiveInt
 
@@ -9,8 +8,8 @@ from pygismeteo_base import types
 
 
 class Settings(BaseModel):
-    lang: Optional[types.Lang]
-    token: Optional[str]
+    lang: types.Lang | None
+    token: str | None
 
     class Config:
         anystr_strip_whitespace = True

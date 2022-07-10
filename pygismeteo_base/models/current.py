@@ -1,32 +1,30 @@
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import BaseModel, Field
 
 
 class Precipitation(BaseModel):
-    type_ext: Optional[int]
+    type_ext: int | None
     intensity: int
-    correction: Optional[bool]
-    amount: Optional[float]
+    correction: bool | None
+    amount: float | None
     duration: int
     type: int
 
 
 class Pressure(BaseModel):
-    h_pa: Optional[int]
-    mm_hg_atm: Optional[int]
-    in_hg: Optional[float]
+    h_pa: int | None
+    mm_hg_atm: int | None
+    in_hg: float | None
 
 
 class Humidity(BaseModel):
-    percent: Optional[int]
+    percent: int | None
 
 
 class Direction(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: int | None
+    scale_8: int | None
 
 
 class Speed(BaseModel):
@@ -49,13 +47,13 @@ class Date(BaseModel):
     utc: str = Field(..., alias="UTC")
     local: str
     time_zone_offset: int
-    hr_to_forecast: Optional[int]
+    hr_to_forecast: int | None
     unix: int
 
 
 class Radiation(BaseModel):
-    uvb_index: Optional[int]
-    uvb: Optional[int] = Field(..., alias="UVB")
+    uvb_index: int | None
+    uvb: int | None = Field(..., alias="UVB")
 
 
 class Comfort(BaseModel):
@@ -92,7 +90,7 @@ class Model(BaseModel):
     wind: Wind
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int]
+    phenomenon: int | None
     radiation: Radiation
     city: int
     kind: str
