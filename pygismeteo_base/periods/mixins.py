@@ -13,7 +13,11 @@ class CurrentMixin(mixins_abc.PeriodMixin):
         coords = validators.Coordinates(latitude=latitude, longitude=longitude)
         return self._endpoint, coords.dict()
 
-    def _get_params_by_id(self, id: int) -> tuple[str, types.Params]:
+    def _get_params_by_id(
+        self,
+        # pylint: disable-next=invalid-name,redefined-builtin
+        id: int,
+    ) -> tuple[str, types.Params]:
         locality_id = validators.LocalityID.parse_obj(id)
         url = f"{self._endpoint}/{locality_id.__root__}"
         return url, None
