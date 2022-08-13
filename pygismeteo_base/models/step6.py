@@ -1,21 +1,23 @@
 from __future__ import annotations
 
+from typing import List, Optional
+
 from pydantic import BaseModel, Field
 
 
 class Precipitation(BaseModel):
-    type_ext: int | None
+    type_ext: Optional[int]
     intensity: int
-    correction: bool | None
+    correction: Optional[bool]
     amount: float
     duration: int
     type: int
 
 
 class Pressure(BaseModel):
-    h_pa: int | None
-    mm_hg_atm: int | None
-    in_hg: float | None
+    h_pa: Optional[int]
+    mm_hg_atm: Optional[int]
+    in_hg: Optional[float]
 
 
 class Humidity(BaseModel):
@@ -23,8 +25,8 @@ class Humidity(BaseModel):
 
 
 class Direction(BaseModel):
-    degree: int | None
-    scale_8: int | None
+    degree: Optional[int]
+    scale_8: Optional[int]
 
 
 class Speed(BaseModel):
@@ -47,13 +49,13 @@ class Date(BaseModel):
     utc: str = Field(..., alias="UTC")
     time_zone_offset: int
     local: str
-    hr_to_forecast: int | None
+    hr_to_forecast: Optional[int]
     unix: int
 
 
 class Radiation(BaseModel):
-    uvb_index: int | None
-    uvb: int | None = Field(..., alias="UVB")
+    uvb_index: Optional[int]
+    uvb: Optional[int] = Field(..., alias="UVB")
 
 
 class Comfort(BaseModel):
@@ -90,7 +92,7 @@ class ModelItem(BaseModel):
     wind: Wind
     cloudiness: Cloudiness
     date: Date
-    phenomenon: int | None
+    phenomenon: Optional[int]
     radiation: Radiation
     city: int
     kind: str
@@ -100,4 +102,4 @@ class ModelItem(BaseModel):
 
 
 class Model(BaseModel):
-    __root__: list[ModelItem]
+    __root__: List[ModelItem]

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Tuple
+
 from pygismeteo_base import constants, types, validators
 
 
@@ -11,7 +13,7 @@ class BaseHttpClient:
 
     def _get_params_and_headers(
         self, params: types.Params
-    ) -> tuple[types.Params, types.Headers]:
+    ) -> Tuple[types.Params, types.Headers]:
         lang_dict = {"lang": self.settings.lang} if self.settings.lang else {}
         params_dict = params or {}
         token = self.settings.token or constants.DEFAULT_TOKEN

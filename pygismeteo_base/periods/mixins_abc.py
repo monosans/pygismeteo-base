@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABCMeta, abstractmethod
-from typing import Any
+from typing import Any, Type, Union
 
 from pygismeteo_base import validators
 
@@ -11,7 +11,7 @@ class PeriodMixin(metaclass=ABCMeta):
 
     @property
     @abstractmethod
-    def _model(self) -> type[Any]:
+    def _model(self) -> Type[Any]:
         pass
 
     @property
@@ -27,5 +27,5 @@ class StepNMixin(PeriodMixin):
     @abstractmethod
     def _days_validator(
         self,
-    ) -> type[validators.Step3Days | validators.Step6or24Days]:
+    ) -> Type[Union[validators.Step3Days, validators.Step6or24Days]]:
         pass

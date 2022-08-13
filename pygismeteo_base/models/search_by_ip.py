@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -14,17 +16,17 @@ class SubDistrict(BaseModel):
 
 
 class Country(BaseModel):
-    name: str | None
+    name: Optional[str]
     code: str
-    name_p: str | None = Field(..., alias="nameP")
+    name_p: Optional[str] = Field(..., alias="nameP")
 
 
 class Model(BaseModel):
-    district: District | None
+    district: Optional[District]
     id: int
-    sub_district: SubDistrict | None
+    sub_district: Optional[SubDistrict]
     url: str
-    name_p: str | None = Field(..., alias="nameP")
-    name: str | None
+    name_p: Optional[str] = Field(..., alias="nameP")
+    name: Optional[str]
     kind: str
     country: Country

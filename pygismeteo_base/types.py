@@ -1,19 +1,10 @@
 from __future__ import annotations
 
-import sys
 from typing import Mapping, Optional, TypeVar, Union
 
+from typing_extensions import Literal, TypeAlias
+
 from pygismeteo_base import models
-
-if sys.version_info < (3, 10):
-    from typing_extensions import TypeAlias
-else:
-    from typing import TypeAlias
-
-if sys.version_info < (3, 8):
-    from typing_extensions import Literal
-else:
-    from typing import Literal
 
 Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
 Step3Days: TypeAlias = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
