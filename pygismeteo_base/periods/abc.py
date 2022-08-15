@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABCMeta, abstractmethod
 from typing import Tuple, Type, Union
 
-from pygismeteo_base import types, validators
+from .. import types, validators
 
 
 class PeriodABC(metaclass=ABCMeta):

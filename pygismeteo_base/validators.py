@@ -5,7 +5,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field, PositiveInt
 
-from pygismeteo_base import types
+from . import types
 
 
 class Settings(BaseModel):

@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABCMeta, abstractmethod
 from typing import Any, Type, Union
 
-from pygismeteo_base import validators
+from .. import validators
 
 
 class PeriodMixin(metaclass=ABCMeta):

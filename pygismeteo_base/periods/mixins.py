@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Tuple, Type
 
-from pygismeteo_base import models, types, validators
-from pygismeteo_base.periods import mixins_abc
+from .. import models, types, validators
+from . import mixins_abc
 
 
 class CurrentMixin(mixins_abc.PeriodMixin):

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pygismeteo_base import types, validators
+from . import types, validators
 
 
 class Search:

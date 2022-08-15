@@ -4,7 +4,7 @@ from typing import Mapping, Optional, TypeVar, Union
 
 from typing_extensions import Literal, TypeAlias
 
-from pygismeteo_base import models
+from . import models
 
 Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
 Step3Days: TypeAlias = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

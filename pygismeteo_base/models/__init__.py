@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pygismeteo_base.models import (
+from . import (
     current,
     search_by_coordinates,
     search_by_ip,
