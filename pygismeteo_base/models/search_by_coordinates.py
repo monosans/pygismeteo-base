@@ -22,9 +22,9 @@ class Country(BaseModel):
 
 
 class ModelItem(BaseModel):
-    district: Optional[District]
+    district: Optional[District] = Field(default=None)
     id: int
-    sub_district: Optional[SubDistrict]
+    sub_district: Optional[SubDistrict] = Field(default=None)
     url: str
     name_p: str = Field(..., alias="nameP")
     name: str

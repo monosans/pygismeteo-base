@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 
 
 class Precipitation(BaseModel):
-    type_ext: Optional[int]
+    type_ext: Optional[int] = Field(default=None)
     intensity: int
     amount: float
     type: int
@@ -134,9 +134,9 @@ class Min3(BaseModel):
 
 
 class Avg1(BaseModel):
-    km_h: Optional[int]
-    m_s: Optional[int]
-    mi_h: Optional[int]
+    km_h: Optional[int] = Field(default=None)
+    m_s: Optional[int] = Field(default=None)
+    mi_h: Optional[int] = Field(default=None)
 
 
 class Speed(BaseModel):
@@ -146,18 +146,18 @@ class Speed(BaseModel):
 
 
 class Max4(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: Optional[int] = Field(default=None)
+    scale_8: Optional[int] = Field(default=None)
 
 
 class Min4(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: Optional[int] = Field(default=None)
+    scale_8: Optional[int] = Field(default=None)
 
 
 class Avg2(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: Optional[int] = Field(default=None)
+    scale_8: Optional[int] = Field(default=None)
 
 
 class Direction(BaseModel):
@@ -179,10 +179,10 @@ class ModelItem(BaseModel):
     description: Description
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int]
+    phenomenon: Optional[int] = Field(default=None)
     radiation: Radiation
     city: int
-    kind: Optional[str]
+    kind: Optional[str] = Field(default=None)
     storm: bool
     temperature: Temperature
     wind: Wind

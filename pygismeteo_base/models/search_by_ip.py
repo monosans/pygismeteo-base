@@ -16,17 +16,17 @@ class SubDistrict(BaseModel):
 
 
 class Country(BaseModel):
-    name: Optional[str]
+    name: Optional[str] = Field(default=None)
     code: str
-    name_p: Optional[str] = Field(..., alias="nameP")
+    name_p: Optional[str] = Field(default=None, alias="nameP")
 
 
 class Model(BaseModel):
-    district: Optional[District]
+    district: Optional[District] = Field(default=None)
     id: int
-    sub_district: Optional[SubDistrict]
+    sub_district: Optional[SubDistrict] = Field(default=None)
     url: str
-    name_p: Optional[str] = Field(..., alias="nameP")
-    name: Optional[str]
+    name_p: Optional[str] = Field(default=None, alias="nameP")
+    name: Optional[str] = Field(default=None)
     kind: str
     country: Country

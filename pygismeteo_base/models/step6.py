@@ -6,18 +6,18 @@ from pydantic import BaseModel, Field
 
 
 class Precipitation(BaseModel):
-    type_ext: Optional[int]
+    type_ext: Optional[int] = Field(default=None)
     intensity: int
-    correction: Optional[bool]
+    correction: Optional[bool] = Field(default=None)
     amount: float
     duration: int
     type: int
 
 
 class Pressure(BaseModel):
-    h_pa: Optional[int]
-    mm_hg_atm: Optional[int]
-    in_hg: Optional[float]
+    h_pa: Optional[int] = Field(default=None)
+    mm_hg_atm: Optional[int] = Field(default=None)
+    in_hg: Optional[float] = Field(default=None)
 
 
 class Humidity(BaseModel):
@@ -25,8 +25,8 @@ class Humidity(BaseModel):
 
 
 class Direction(BaseModel):
-    degree: Optional[int]
-    scale_8: Optional[int]
+    degree: Optional[int] = Field(default=None)
+    scale_8: Optional[int] = Field(default=None)
 
 
 class Speed(BaseModel):
@@ -49,7 +49,7 @@ class Date(BaseModel):
     utc: str = Field(..., alias="UTC")
     time_zone_offset: int
     local: str
-    hr_to_forecast: Optional[int]
+    hr_to_forecast: Optional[int] = Field(default=None)
     unix: int
 
 
@@ -92,7 +92,7 @@ class ModelItem(BaseModel):
     wind: Wind
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int]
+    phenomenon: Optional[int] = Field(default=None)
     radiation: Radiation
     city: int
     kind: str
