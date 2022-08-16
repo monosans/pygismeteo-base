@@ -9,8 +9,8 @@ from . import types
 
 
 class Settings(BaseModel):
-    lang: Optional[types.Lang]
-    token: Optional[str]
+    lang: Optional[types.Lang] = Field(...)
+    token: Optional[str] = Field(...)
 
     class Config:
         anystr_strip_whitespace = True
