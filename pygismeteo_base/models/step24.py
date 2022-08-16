@@ -60,8 +60,8 @@ class Date(BaseModel):
 
 
 class Radiation(BaseModel):
-    max: Optional[int]
-    max_index: Optional[int]
+    max: int
+    max_index: int
 
 
 class Max(BaseModel):
