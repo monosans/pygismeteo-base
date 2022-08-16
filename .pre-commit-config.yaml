@@ -41,8 +41,8 @@ repos:
       - id: mypy
         args: []
         additional_dependencies:
-          - pydantic>=1.9,<2.0
-          - typing-extensions>=4.0,<5.0
+          - pydantic>=1.9,<2
+          - typing-extensions>=4.0,<5
 
   - repo: local
     hooks:
