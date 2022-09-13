@@ -14,10 +14,8 @@ class Search:
             latitude=latitude, longitude=longitude
         )
         params = coordinates.dict()
-        if limit is not None:
-            lim = validators.SearchLimit.parse_obj(limit).__root__
-            params.update({"limit": lim})
-        return params
+        lim = validators.SearchLimit.parse_obj(limit).__root__
+        return {**params, "limit": lim}
 
     @staticmethod
     def _get_params_by_ip(ip: str) -> types.Params:
