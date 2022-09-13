@@ -3,7 +3,7 @@ from __future__ import annotations
 from ipaddress import IPv4Address
 from typing import Optional
 
-from pydantic import BaseModel, Field, PositiveInt
+from pydantic import BaseModel, Field
 
 from . import types
 
@@ -41,7 +41,7 @@ class Query(ImmutableModel):
 
 
 class LocalityID(ImmutableModel):
-    __root__: PositiveInt
+    __root__: int = Field(..., ge=1)
 
 
 class Step3Days(ImmutableModel):
