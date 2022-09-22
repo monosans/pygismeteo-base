@@ -1,3 +1,3 @@
 from __future__ import annotations
 
-DEFAULT_TOKEN = "5b18f4510bd152.48552413"
+DEFAULT_TOKEN = "61f2622da85fe2.06084651"
