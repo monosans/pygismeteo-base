@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 from abc import ABCMeta, abstractmethod
-from typing import Any, Type, Union
+from typing import Type, Union
 
-from .. import validators
+from .. import types, validators
 
 
 class PeriodMixin(metaclass=ABCMeta):
@@ -11,12 +11,12 @@ class PeriodMixin(metaclass=ABCMeta):
 
     @property
     @abstractmethod
-    def _model(self) -> Type[Any]:
+    def _endpoint(self) -> str:
         pass
 
     @property
     @abstractmethod
-    def _endpoint(self) -> str:
+    def _model(self) -> types.PeriodModel:
         pass
 
 

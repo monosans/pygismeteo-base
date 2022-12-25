@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Mapping, Optional, TypeVar, Union
+from typing import Mapping, Optional, Type, TypeVar, Union
 
 from typing_extensions import Literal, TypeAlias
 
@@ -50,11 +50,20 @@ SearchLimit: TypeAlias = Literal[
     36,
 ]
 
-# pylint: disable=invalid-name
+PeriodModel: TypeAlias = Type[
+    Union[
+        models.current.Model,
+        models.step3.Model,
+        models.step6.Model,
+        models.step24.Model,
+    ]
+]
+StepNModel: TypeAlias = Type[
+    Union[models.step3.Model, models.step6.Model, models.step24.Model]
+]
+# pylint: disable-next=invalid-name
 TDays = TypeVar("TDays", Step3Days, Step6or24Days)
-TStepNModel = TypeVar(
-    "TStepNModel", models.step3.Model, models.step6.Model, models.step24.Model
-)
+# pylint: disable-next=invalid-name
 TStepNModelItem = TypeVar(
     "TStepNModelItem",
     models.step3.ModelItem,

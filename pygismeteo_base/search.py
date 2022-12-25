@@ -1,10 +1,15 @@
 from __future__ import annotations
 
-from . import types, validators
+from . import http, types, validators
+from .endpoint import EndpointABC
 
 
-class Search:
+class Search(EndpointABC[http.THttpClient]):
     __slots__ = ()
+
+    @property
+    def _endpoint(self) -> str:
+        return "search/cities"
 
     @staticmethod
     def _get_params_by_coordinates(
@@ -26,7 +31,3 @@ class Search:
     def _get_params_by_query(query: str) -> types.Params:
         query = validators.Query.parse_obj(query).__root__
         return {"query": query}
-
-    @property
-    def _endpoint(self) -> str:
-        return "search/cities"
