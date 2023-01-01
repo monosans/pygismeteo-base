@@ -50,14 +50,6 @@ SearchLimit: TypeAlias = Literal[
     36,
 ]
 
-PeriodModel: TypeAlias = Type[
-    Union[
-        models.current.Model,
-        models.step3.Model,
-        models.step6.Model,
-        models.step24.Model,
-    ]
-]
 StepNModel: TypeAlias = Type[
     Union[models.step3.Model, models.step6.Model, models.step24.Model]
 ]

@@ -1,24 +1,33 @@
 from __future__ import annotations
 
-from typing import Type
+from abc import ABCMeta, abstractmethod
+from typing import Type, Union
 
-from .. import models, validators
-from . import mixins_abc
+from .. import models, types, validators
 
 
-class CurrentMixin(mixins_abc.PeriodMixin):
+class StepNMixin(metaclass=ABCMeta):
     __slots__ = ()
 
     @property
+    @abstractmethod
     def _endpoint(self) -> str:
-        return "weather/current"
+        pass
 
     @property
-    def _model(self) -> Type[models.current.Model]:
-        return models.current.Model
+    @abstractmethod
+    def _model(self) -> types.StepNModel:
+        pass
+
+    @property
+    @abstractmethod
+    def _days_validator(
+        self,
+    ) -> Type[Union[validators.Step3Days, validators.Step6or24Days]]:
+        pass
 
 
-class Step3Mixin(mixins_abc.StepNMixin):
+class Step3Mixin(StepNMixin):
     __slots__ = ()
 
     @property
@@ -34,7 +43,7 @@ class Step3Mixin(mixins_abc.StepNMixin):
         return validators.Step3Days
 
 
-class Step6Mixin(mixins_abc.StepNMixin):
+class Step6Mixin(StepNMixin):
     __slots__ = ()
 
     @property
@@ -50,7 +59,7 @@ class Step6Mixin(mixins_abc.StepNMixin):
         return validators.Step6or24Days
 
 
-class Step24Mixin(mixins_abc.StepNMixin):
+class Step24Mixin(StepNMixin):
     __slots__ = ()
 
     @property

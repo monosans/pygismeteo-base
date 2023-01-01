@@ -4,7 +4,7 @@ from . import http, types, validators
 from .endpoint import EndpointABC
 
 
-class Search(EndpointABC[http.THttpClient]):
+class SearchBase(EndpointABC[http.THttpClient]):
     __slots__ = ()
 
     @property
