@@ -62,9 +62,7 @@ SearchLimit: TypeAlias = Literal[
 StepNModel: TypeAlias = Type[
     Union[models.step3.Model, models.step6.Model, models.step24.Model]
 ]
-# pylint: disable-next=invalid-name
 TDays = TypeVar("TDays", Step3Days, Step6or24Days)
-# pylint: disable-next=invalid-name
 TStepNModelItem = TypeVar(
     "TStepNModelItem",
     models.step3.ModelItem,

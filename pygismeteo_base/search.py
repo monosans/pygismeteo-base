@@ -15,9 +15,7 @@ class SearchBase(EndpointABC[http.THttpClient]):
     def _get_params_by_coordinates(
         latitude: float, longitude: float, *, limit: types.SearchLimit
     ) -> types.Params:
-        coordinates = validators.Coordinates(
-            latitude=latitude, longitude=longitude
-        )
+        coordinates = validators.Coordinates(latitude=latitude, longitude=longitude)
         params = coordinates.dict()
         lim = validators.SearchLimit.parse_obj(limit).__root__
         return {**params, "limit": lim}

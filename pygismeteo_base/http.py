@@ -10,9 +10,7 @@ T = TypeVar("T")
 class BaseHttpClient(Generic[T]):
     __slots__ = ("session", "settings")
 
-    def __init__(
-        self, session: Optional[T], settings: validators.Settings
-    ) -> None:
+    def __init__(self, session: Optional[T], settings: validators.Settings) -> None:
         self.session = session
         self.settings = settings
 
@@ -25,5 +23,4 @@ class BaseHttpClient(Generic[T]):
         return {**lang_dict, **params_dict}, {"X-Gismeteo-Token": token}
 
 
-# pylint: disable-next=invalid-name
 THttpClient = TypeVar("THttpClient", bound=BaseHttpClient[Any])

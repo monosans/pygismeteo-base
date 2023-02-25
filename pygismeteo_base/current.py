@@ -19,11 +19,7 @@ class CurrentBase(EndpointABC[http.THttpClient]):
         coords = validators.Coordinates(latitude=latitude, longitude=longitude)
         return self._endpoint, coords.dict()
 
-    def _get_params_by_id(
-        self,
-        # pylint: disable-next=invalid-name,redefined-builtin
-        id: int,
-    ) -> Tuple[str, types.Params]:
+    def _get_params_by_id(self, id: int) -> Tuple[str, types.Params]:  # noqa: A002
         locality_id = validators.LocalityID.parse_obj(id)
         url = f"{self._endpoint}/{locality_id.__root__}"
         return url, None
