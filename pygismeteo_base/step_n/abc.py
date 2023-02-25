@@ -31,11 +31,7 @@ class StepNABC(EndpointABC[http.THttpClient]):
         return self._endpoint, params
 
     def _get_params_by_id(
-        self,
-        # pylint: disable-next=invalid-name,redefined-builtin
-        id: int,
-        *,
-        days: Union[str, int],
+        self, id: int, *, days: Union[str, int]  # noqa: A002
     ) -> Tuple[str, types.Params]:
         id_model = validators.LocalityID.parse_obj(id)
         url = f"{self._endpoint}/{id_model.__root__}"
