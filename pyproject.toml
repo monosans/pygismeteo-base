@@ -33,7 +33,7 @@ typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.10" }
 black = ">=22.12"
 mypy = "^1.0"
 pre-commit = ">=2.21,<4"
-ruff = "^0.0.252"
+ruff = ">=0.0.252,<0.0.254"
 
 [tool.black]
 target-version = ["py37"]
