@@ -6,18 +6,18 @@ from pydantic import BaseModel, Field
 
 
 class Precipitation(BaseModel):
-    type_ext: Optional[int] = Field(default=None)
+    type_ext: Optional[int] = None
     intensity: int
-    correction: Optional[bool] = Field(default=None)
+    correction: Optional[bool] = None
     amount: float
     duration: int
     type: int
 
 
 class Pressure(BaseModel):
-    h_pa: Optional[int] = Field(default=None)
-    mm_hg_atm: Optional[int] = Field(default=None)
-    in_hg: Optional[float] = Field(default=None)
+    h_pa: Optional[int] = None
+    mm_hg_atm: Optional[int] = None
+    in_hg: Optional[float] = None
 
 
 class Humidity(BaseModel):
@@ -25,8 +25,8 @@ class Humidity(BaseModel):
 
 
 class Direction(BaseModel):
-    degree: Optional[int] = Field(default=None)
-    scale_8: Optional[int] = Field(default=None)
+    degree: Optional[int] = None
+    scale_8: Optional[int] = None
 
 
 class Speed(BaseModel):
@@ -46,31 +46,31 @@ class Cloudiness(BaseModel):
 
 
 class Date(BaseModel):
-    utc: str = Field(..., alias="UTC")
+    utc: str = Field(alias="UTC")
     time_zone_offset: int
     local: str
-    hr_to_forecast: Optional[int] = Field(default=None)
+    hr_to_forecast: Optional[int] = None
     unix: int
 
 
 class Radiation(BaseModel):
     uvb_index: int
-    uvb: int = Field(..., alias="UVB")
+    uvb: int = Field(alias="UVB")
 
 
 class Comfort(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Water(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Air(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Temperature(BaseModel):
@@ -92,7 +92,7 @@ class ModelItem(BaseModel):
     wind: Wind
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int] = Field(default=None)
+    phenomenon: Optional[int] = None
     radiation: Radiation
     city: int
     kind: str

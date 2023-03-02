@@ -24,12 +24,12 @@ class ImmutableModel(BaseModel):
 
 
 class Coordinates(ImmutableModel):
-    latitude: float = Field(..., ge=-90, le=90)
-    longitude: float = Field(..., ge=-180, le=180)
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
 
 
 class SearchLimit(ImmutableModel):
-    __root__: int = Field(..., ge=1, le=36)
+    __root__: int = Field(ge=1, le=36)
 
 
 class IPAddress(ImmutableModel):
@@ -41,12 +41,12 @@ class Query(ImmutableModel):
 
 
 class LocalityID(ImmutableModel):
-    __root__: int = Field(..., ge=1)
+    __root__: int = Field(ge=1)
 
 
 class Step3Days(ImmutableModel):
-    __root__: int = Field(..., ge=1, le=10)
+    __root__: int = Field(ge=1, le=10)
 
 
 class Step6or24Days(ImmutableModel):
-    __root__: int = Field(..., ge=3, le=10)
+    __root__: int = Field(ge=3, le=10)

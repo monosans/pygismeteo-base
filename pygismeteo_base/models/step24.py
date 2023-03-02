@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 
 
 class Precipitation(BaseModel):
-    type_ext: Optional[int] = Field(default=None)
+    type_ext: Optional[int] = None
     intensity: int
     amount: float
     type: int
@@ -53,7 +53,7 @@ class Cloudiness(BaseModel):
 
 
 class Date(BaseModel):
-    utc: str = Field(..., alias="UTC")
+    utc: str = Field(alias="UTC")
     local: str
     time_zone_offset: int
     unix: int
@@ -65,13 +65,13 @@ class Radiation(BaseModel):
 
 
 class Max(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Min(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Comfort(BaseModel):
@@ -80,13 +80,13 @@ class Comfort(BaseModel):
 
 
 class Max1(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Min1(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Water(BaseModel):
@@ -95,18 +95,18 @@ class Water(BaseModel):
 
 
 class Max2(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Min2(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Avg(BaseModel):
-    c: float = Field(..., alias="C")
-    f: float = Field(..., alias="F")
+    c: float = Field(alias="C")
+    f: float = Field(alias="F")
 
 
 class Air(BaseModel):
@@ -134,9 +134,9 @@ class Min3(BaseModel):
 
 
 class Avg1(BaseModel):
-    km_h: Optional[int] = Field(default=None)
-    m_s: Optional[int] = Field(default=None)
-    mi_h: Optional[int] = Field(default=None)
+    km_h: Optional[int] = None
+    m_s: Optional[int] = None
+    mi_h: Optional[int] = None
 
 
 class Speed(BaseModel):
@@ -146,18 +146,18 @@ class Speed(BaseModel):
 
 
 class Max4(BaseModel):
-    degree: Optional[int] = Field(default=None)
-    scale_8: Optional[int] = Field(default=None)
+    degree: Optional[int] = None
+    scale_8: Optional[int] = None
 
 
 class Min4(BaseModel):
-    degree: Optional[int] = Field(default=None)
-    scale_8: Optional[int] = Field(default=None)
+    degree: Optional[int] = None
+    scale_8: Optional[int] = None
 
 
 class Avg2(BaseModel):
-    degree: Optional[int] = Field(default=None)
-    scale_8: Optional[int] = Field(default=None)
+    degree: Optional[int] = None
+    scale_8: Optional[int] = None
 
 
 class Direction(BaseModel):
@@ -179,10 +179,10 @@ class ModelItem(BaseModel):
     description: Description
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int] = Field(default=None)
+    phenomenon: Optional[int] = None
     radiation: Radiation
     city: int
-    kind: Optional[str] = Field(default=None)
+    kind: Optional[str] = None
     storm: bool
     temperature: Temperature
     wind: Wind
