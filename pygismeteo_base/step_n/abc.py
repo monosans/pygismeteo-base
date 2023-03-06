@@ -27,7 +27,7 @@ class StepNABC(EndpointABC[http.THttpClient]):
     ) -> Tuple[str, types.Params]:
         coords = validators.Coordinates(latitude=latitude, longitude=longitude)
         days_model = self._days_validator.parse_obj(days)
-        params = {"days": days_model.__root__, **coords.dict()}
+        params = dict(coords.dict(), days=days_model.__root__)
         return self._endpoint, params
 
     def _get_params_by_id(
