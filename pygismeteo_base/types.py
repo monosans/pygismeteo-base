@@ -63,6 +63,9 @@ StepNModel: TypeAlias = Type[
     Union[models.step3.Model, models.step6.Model, models.step24.Model]
 ]
 TDays = TypeVar("TDays", Step3Days, Step6or24Days)
+TStepNModel = TypeVar(
+    "TStepNModel", models.step3.Model, models.step6.Model, models.step24.Model
+)
 TStepNModelItem = TypeVar(
     "TStepNModelItem",
     models.step3.ModelItem,
