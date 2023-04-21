@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from ipaddress import IPv4Address
+from typing import Union
+
 from . import http, types, validators
 from .endpoint import EndpointABC
 
@@ -21,7 +24,7 @@ class SearchBase(EndpointABC[http.THttpClient]):
         return dict(params, limit=lim)
 
     @staticmethod
-    def _get_params_by_ip(ip: str) -> types.Params:
+    def _get_params_by_ip(ip: Union[IPv4Address, str]) -> types.Params:
         ip = str(validators.IPAddress.parse_obj(ip).__root__)
         return {"ip": ip}
 
