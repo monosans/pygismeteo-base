@@ -17,36 +17,26 @@ class Settings(BaseModel):
         validate_assignment = True
 
 
-class ImmutableModel(BaseModel):
-    class Config:
-        allow_mutation = False
-        anystr_strip_whitespace = True
-
-
-class Coordinates(ImmutableModel):
+class Coordinates(BaseModel):
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
 
 
-class SearchLimit(ImmutableModel):
+class SearchLimit(BaseModel):
     __root__: int = Field(ge=1, le=36)
 
 
-class IPAddress(ImmutableModel):
+class IPAddress(BaseModel):
     __root__: IPv4Address
 
 
-class Query(ImmutableModel):
-    __root__: str
-
-
-class LocalityID(ImmutableModel):
+class LocalityID(BaseModel):
     __root__: int = Field(ge=1)
 
 
-class Step3Days(ImmutableModel):
+class Step3Days(BaseModel):
     __root__: int = Field(ge=1, le=10)
 
 
-class Step6or24Days(ImmutableModel):
+class Step6or24Days(BaseModel):
     __root__: int = Field(ge=3, le=10)
