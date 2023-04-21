@@ -1,19 +1,9 @@
 from __future__ import annotations
 
-import sys
 from typing import Mapping, Optional, Type, TypeVar, Union
 
 from . import models
-
-if sys.version_info < (3, 10):  # pragma: <3.10 cover
-    from typing_extensions import TypeAlias
-else:  # pragma: >=3.10 cover
-    from typing import TypeAlias
-
-if sys.version_info < (3, 8):  # pragma: <3.8 cover
-    from typing_extensions import Literal
-else:  # pragma: >=3.8 cover
-    from typing import Literal
+from .typing_compat import Literal, TypeAlias
 
 Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
 Step3Days: TypeAlias = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
