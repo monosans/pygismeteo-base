@@ -23,7 +23,7 @@ class StepNMixin(metaclass=ABCMeta):
     @abstractmethod
     def _days_validator(
         self,
-    ) -> Type[Union[validators.Step3Days, validators.Step6or24Days]]:
+    ) -> Type[Union[validators.Step3Days, validators.Step6Days, validators.Step24Days]]:
         pass
 
 
@@ -55,8 +55,8 @@ class Step6Mixin(StepNMixin):
         return models.step6.Model
 
     @property
-    def _days_validator(self) -> Type[validators.Step6or24Days]:
-        return validators.Step6or24Days
+    def _days_validator(self) -> Type[validators.Step6Days]:
+        return validators.Step6Days
 
 
 class Step24Mixin(StepNMixin):
@@ -71,5 +71,5 @@ class Step24Mixin(StepNMixin):
         return models.step24.Model
 
     @property
-    def _days_validator(self) -> Type[validators.Step6or24Days]:
-        return validators.Step6or24Days
+    def _days_validator(self) -> Type[validators.Step24Days]:
+        return validators.Step24Days

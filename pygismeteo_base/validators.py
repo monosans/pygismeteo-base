@@ -40,3 +40,7 @@ class Step3Days(BaseModel):
 
 class Step6or24Days(BaseModel):
     __root__: int = Field(ge=3, le=10)
+
+
+Step6Days = Step6or24Days
+Step24Days = Step6or24Days
