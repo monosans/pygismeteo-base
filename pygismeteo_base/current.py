@@ -16,10 +16,16 @@ class CurrentBase(EndpointABC[http.THttpClient]):
     def _get_params_by_coordinates(
         self, latitude: float, longitude: float
     ) -> Tuple[str, types.Params]:
-        coords = validators.Coordinates(latitude=latitude, longitude=longitude)
-        return self._endpoint, coords.dict()
+        coords_validator = validators.Coordinates(
+            latitude=latitude, longitude=longitude
+        )
+        params = {
+            "latitude": str(coords_validator.latitude),
+            "longitude": str(coords_validator.longitude),
+        }
+        return self._endpoint, params
 
     def _get_params_by_id(self, id: int) -> Tuple[str, types.Params]:  # noqa: A002
-        locality_id = validators.LocalityID.parse_obj(id)
-        url = f"{self._endpoint}/{locality_id.__root__}"
+        id_validator = validators.LocalityID.parse_obj(id)
+        url = f"{self._endpoint}/{id_validator.__root__}"
         return url, None

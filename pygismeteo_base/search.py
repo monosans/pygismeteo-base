@@ -18,15 +18,20 @@ class SearchBase(EndpointABC[http.THttpClient]):
     def _get_params_by_coordinates(
         latitude: float, longitude: float, *, limit: types.SearchLimit
     ) -> types.Params:
-        coordinates = validators.Coordinates(latitude=latitude, longitude=longitude)
-        params = coordinates.dict()
-        lim = validators.SearchLimit.parse_obj(limit).__root__
-        return dict(params, limit=lim)
+        coords_validator = validators.Coordinates(
+            latitude=latitude, longitude=longitude
+        )
+        limit_validator = validators.SearchLimit.parse_obj(limit)
+        return {
+            "latitude": str(coords_validator.latitude),
+            "longitude": str(coords_validator.longitude),
+            "limit": str(limit_validator.__root__),
+        }
 
     @staticmethod
     def _get_params_by_ip(ip: Union[IPv4Address, str]) -> types.Params:
-        ip = str(validators.IPAddress.parse_obj(ip).__root__)
-        return {"ip": ip}
+        ip_validator = validators.IPAddress.parse_obj(ip)
+        return {"ip": str(ip_validator.__root__)}
 
     @staticmethod
     def _get_params_by_query(query: str) -> types.Params:

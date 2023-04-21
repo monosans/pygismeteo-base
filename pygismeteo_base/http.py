@@ -17,10 +17,15 @@ class BaseHttpClient(Generic[T]):
     def _get_params_and_headers(
         self, params: types.Params
     ) -> Tuple[types.Params, types.Headers]:
-        lang_dict = {"lang": self.settings.lang} if self.settings.lang else {}
-        params_dict = params or {}
+        if self.settings.lang:
+            params = (
+                {"lang": self.settings.lang, **params}
+                if params
+                else {"lang": self.settings.lang}
+            )
         token = self.settings.token or constants.DEFAULT_TOKEN
-        return {**lang_dict, **params_dict}, {"X-Gismeteo-Token": token}
+        headers = {"X-Gismeteo-Token": token}
+        return params, headers
 
 
 THttpClient = TypeVar("THttpClient", bound=BaseHttpClient[Any])
