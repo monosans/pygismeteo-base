@@ -23,7 +23,7 @@ class StepNABC(EndpointABC[http.THttpClient]):
         pass
 
     def _get_params_by_coordinates(
-        self, latitude: float, longitude: float, *, days: Union[str, int]
+        self, latitude: float, longitude: float, *, days: types.StepNDays
     ) -> Tuple[str, types.Params]:
         coords = validators.Coordinates(latitude=latitude, longitude=longitude)
         days_model = self._days_validator.parse_obj(days)
@@ -31,7 +31,7 @@ class StepNABC(EndpointABC[http.THttpClient]):
         return self._endpoint, params
 
     def _get_params_by_id(
-        self, id: int, *, days: Union[str, int]  # noqa: A002
+        self, id: int, *, days: types.StepNDays  # noqa: A002
     ) -> Tuple[str, types.Params]:
         id_model = validators.LocalityID.parse_obj(id)
         url = f"{self._endpoint}/{id_model.__root__}"

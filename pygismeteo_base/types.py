@@ -18,6 +18,7 @@ else:  # pragma: >=3.8 cover
 Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
 Step3Days: TypeAlias = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 Step6or24Days: TypeAlias = Literal[3, 4, 5, 6, 7, 8, 9, 10]
+StepNDays: TypeAlias = Union[Step3Days, Step6or24Days]
 Params: TypeAlias = Optional[Mapping[str, Union[str, int, float]]]
 Headers: TypeAlias = Mapping[str, str]
 SearchLimit: TypeAlias = Literal[
