@@ -35,4 +35,5 @@ class SearchBase(EndpointABC[http.THttpClient]):
 
     @staticmethod
     def _get_params_by_query(query: str) -> types.Params:
-        return {"query": str(query)}
+        query_validator = validators.Query.parse_obj(query)
+        return {"query": query_validator.__root__}

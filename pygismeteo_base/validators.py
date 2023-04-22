@@ -30,6 +30,10 @@ class IPAddress(BaseModel):
     __root__: IPv4Address
 
 
+class Query(BaseModel):
+    __root__: str
+
+
 class LocalityID(BaseModel):
     __root__: int = Field(ge=1)
 
