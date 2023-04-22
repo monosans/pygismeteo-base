@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pygismeteo-base"
-version = "4.4.0"
+version = "4.4.1"
 description = "Base for pygismeteo and aiopygismeteo"
 authors = ["monosans <hsyqixco@protonmail.com>"]
 license = "MIT"
