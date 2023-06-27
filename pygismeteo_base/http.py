@@ -10,7 +10,9 @@ T = TypeVar("T")
 class BaseHttpClient(Generic[T]):
     __slots__ = ("session", "settings")
 
-    def __init__(self, session: Optional[T], settings: validators.Settings) -> None:
+    def __init__(
+        self, session: Optional[T], settings: validators.Settings
+    ) -> None:
         self.session = session
         self.settings = settings
 

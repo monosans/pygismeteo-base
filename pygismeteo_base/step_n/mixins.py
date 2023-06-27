@@ -23,7 +23,9 @@ class StepNMixin(metaclass=ABCMeta):
     @abstractmethod
     def _days_validator(
         self,
-    ) -> Type[Union[validators.Step3Days, validators.Step6Days, validators.Step24Days]]:
+    ) -> Type[
+        Union[validators.Step3Days, validators.Step6Days, validators.Step24Days]
+    ]:
         pass
 
 

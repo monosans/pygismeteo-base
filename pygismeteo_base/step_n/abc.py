@@ -19,7 +19,9 @@ class StepNABC(EndpointABC[http.THttpClient]):
     @abstractmethod
     def _days_validator(
         self,
-    ) -> Type[Union[validators.Step3Days, validators.Step6Days, validators.Step24Days]]:
+    ) -> Type[
+        Union[validators.Step3Days, validators.Step6Days, validators.Step24Days]
+    ]:
         pass
 
     def _get_params_by_coordinates(
