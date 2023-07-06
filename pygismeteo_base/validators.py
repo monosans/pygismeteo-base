@@ -3,7 +3,10 @@ from __future__ import annotations
 from ipaddress import IPv4Address
 from typing import Optional
 
-from pydantic import BaseModel, Field
+try:
+    from pydantic.v1 import BaseModel, Field
+except ImportError:
+    from pydantic import BaseModel, Field  # type: ignore[assignment]
 
 from . import types
 
