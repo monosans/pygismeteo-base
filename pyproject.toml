@@ -32,7 +32,7 @@ typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.10" }
 [tool.poetry.group.dev.dependencies]
 black = "23.7.0"
 mypy = "1.5.1"
-pre-commit = "3.3.3"
+pre-commit = "3.4.0"
 ruff = "0.0.286"
 
 [tool.black]
