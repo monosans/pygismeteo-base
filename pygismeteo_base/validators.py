@@ -5,7 +5,7 @@ from typing import Optional
 
 try:
     from pydantic.v1 import BaseModel, Field
-except ImportError:
+except ImportError:  # pragma: no cover
     from pydantic import BaseModel, Field  # type: ignore[assignment]
 
 from . import types
