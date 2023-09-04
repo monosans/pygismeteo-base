@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Generic, Optional, Tuple, TypeVar
+from typing import Generic, Optional, Tuple
+
+from typing_extensions import Any, TypeVar
 
 from . import constants, types, validators
 

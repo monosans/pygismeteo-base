@@ -27,7 +27,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 pydantic = ">=1.9,<3"
-typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.10" }
+typing-extensions = "^4.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "23.7.0"

@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from typing import Mapping, Optional, Type, TypeVar, Union
+from typing import Mapping, Optional, Type, Union
+
+from typing_extensions import Literal, TypeAlias, TypeVar
 
 from . import models
-from .typing_compat import Literal, TypeAlias
 
 Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
 """Языки, поддерживаемые Gismeteo API."""
