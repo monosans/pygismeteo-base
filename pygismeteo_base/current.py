@@ -26,7 +26,8 @@ class CurrentBase(EndpointABC[http.THttpClient]):
         return self._endpoint, params
 
     def _get_params_by_id(
-        self, id: int  # noqa: A002
+        self,
+        id: int,  # noqa: A002
     ) -> Tuple[str, types.Params]:
         id_validator = validators.LocalityID.parse_obj(id)
         url = f"{self._endpoint}/{id_validator.__root__}"

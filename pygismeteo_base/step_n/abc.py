@@ -18,7 +18,7 @@ class StepNABC(EndpointABC[http.THttpClient]):
     @property
     @abstractmethod
     def _days_validator(
-        self,
+        self
     ) -> Type[
         Union[validators.Step3Days, validators.Step6Days, validators.Step24Days]
     ]:
@@ -39,7 +39,10 @@ class StepNABC(EndpointABC[http.THttpClient]):
         return self._endpoint, params
 
     def _get_params_by_id(
-        self, id: int, *, days: types.StepNDays  # noqa: A002
+        self,
+        id: int,  # noqa: A002
+        *,
+        days: types.StepNDays,
     ) -> Tuple[str, types.Params]:
         id_validator = validators.LocalityID.parse_obj(id)
         url = f"{self._endpoint}/{id_validator.__root__}"
