@@ -3,6 +3,8 @@ from __future__ import annotations
 from ipaddress import IPv4Address
 from typing import Union
 
+from typing_extensions import override
+
 from . import http, types, validators
 from .endpoint import EndpointABC
 
@@ -11,6 +13,7 @@ class SearchBase(EndpointABC[http.THttpClient]):
     __slots__ = ()
 
     @property
+    @override
     def _endpoint(self) -> str:
         return "search/cities"
 

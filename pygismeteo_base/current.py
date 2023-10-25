@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Tuple
 
+from typing_extensions import override
+
 from . import http, types, validators
 from .endpoint import EndpointABC
 
@@ -10,6 +12,7 @@ class CurrentBase(EndpointABC[http.THttpClient]):
     __slots__ = ()
 
     @property
+    @override
     def _endpoint(self) -> str:
         return "weather/current"
 
