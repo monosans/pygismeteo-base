@@ -63,8 +63,8 @@ class Date(BaseModel):
 
 
 class Radiation(BaseModel):
-    max: int
-    max_index: int
+    max: Optional[int] = None
+    max_index: Optional[int] = None
 
 
 class Max(BaseModel):
@@ -83,18 +83,16 @@ class Comfort(BaseModel):
 
 
 class Max1(BaseModel):
-    c: float = Field(alias="C")
-    f: float = Field(alias="F")
+    c: Optional[float] = Field(default=None, alias="C")
+    f: Optional[float] = Field(default=None, alias="F")
 
 
-class Min1(BaseModel):
-    c: float = Field(alias="C")
-    f: float = Field(alias="F")
+Min1 = Min
 
 
 class Water(BaseModel):
     max: Max1
-    min: Min1
+    min: Min
 
 
 class Max2(BaseModel):
@@ -102,9 +100,7 @@ class Max2(BaseModel):
     f: float = Field(alias="F")
 
 
-class Min2(BaseModel):
-    c: float = Field(alias="C")
-    f: float = Field(alias="F")
+Min2 = Min
 
 
 class Avg(BaseModel):
@@ -114,7 +110,7 @@ class Avg(BaseModel):
 
 class Air(BaseModel):
     max: Max2
-    min: Min2
+    min: Min
     avg: Avg
 
 

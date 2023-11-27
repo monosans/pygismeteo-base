@@ -57,7 +57,7 @@ class Date(BaseModel):
 
 
 class Radiation(BaseModel):
-    uvb_index: int
+    uvb_index: Optional[int] = None
     uvb: int = Field(alias="UVB")
 
 

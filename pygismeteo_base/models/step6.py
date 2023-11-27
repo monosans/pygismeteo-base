@@ -12,19 +12,19 @@ class Precipitation(BaseModel):
     type_ext: Optional[int] = None
     intensity: int
     correction: Optional[bool] = None
-    amount: float
+    amount: Optional[float] = None
     duration: int
     type: int
 
 
 class Pressure(BaseModel):
-    h_pa: Optional[int] = None
-    mm_hg_atm: Optional[int] = None
-    in_hg: Optional[float] = None
+    h_pa: int
+    mm_hg_atm: int
+    in_hg: float
 
 
 class Humidity(BaseModel):
-    percent: int
+    percent: Optional[int] = None
 
 
 class Direction(BaseModel):
@@ -57,7 +57,7 @@ class Date(BaseModel):
 
 
 class Radiation(BaseModel):
-    uvb_index: int
+    uvb_index: Optional[int] = None
     uvb: int = Field(alias="UVB")
 
 

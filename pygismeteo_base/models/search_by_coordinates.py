@@ -19,9 +19,9 @@ class SubDistrict(BaseModel):
 
 
 class Country(BaseModel):
-    name: Optional[str] = None
+    name: str
     code: str
-    name_p: Optional[str] = Field(default=None, alias="nameP")
+    name_p: str = Field(alias="nameP")
 
 
 class ModelItem(BaseModel):
@@ -29,8 +29,8 @@ class ModelItem(BaseModel):
     id: int
     sub_district: Optional[SubDistrict] = None
     url: str
-    name_p: Optional[str] = Field(default=None, alias="nameP")
-    name: Optional[str] = None
+    name_p: str = Field(alias="nameP")
+    name: str
     distance: float
     kind: str
     country: Country
