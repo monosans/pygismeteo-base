@@ -93,6 +93,7 @@ ignore = [
   "PLR0913",
   "PLR0915",
   "PLR0916",
+  "PLR0917",
   "PT012",
   "RUF001",
   "RUF002",
@@ -119,7 +120,7 @@ target-version = "py38"
 "pygismeteo_base/models/*" = ["A003"]
 
 [tool.ruff.flake8-self]
-ignore-names = []
+ignore-names = ["_name_", "_value_"]
 
 [tool.ruff.flake8-unused-arguments]
 ignore-variadic-names = true
