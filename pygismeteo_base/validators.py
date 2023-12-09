@@ -4,7 +4,7 @@ from ipaddress import IPv4Address
 from typing import Optional
 
 from . import types
-from ._pydantic import BaseModel, Field
+from ._pydantic import BaseModel, Field, FrozenModel
 
 
 class Settings(BaseModel):
@@ -16,32 +16,32 @@ class Settings(BaseModel):
         validate_assignment = True
 
 
-class Coordinates(BaseModel):
+class Coordinates(FrozenModel):
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
 
 
-class SearchLimit(BaseModel):
+class SearchLimit(FrozenModel):
     __root__: int = Field(ge=1, le=36)
 
 
-class IPAddress(BaseModel):
+class IPAddress(FrozenModel):
     __root__: IPv4Address
 
 
-class Query(BaseModel):
+class Query(FrozenModel):
     __root__: str
 
 
-class LocalityID(BaseModel):
+class LocalityID(FrozenModel):
     __root__: int = Field(ge=1)
 
 
-class Step3Days(BaseModel):
+class Step3Days(FrozenModel):
     __root__: int = Field(ge=1, le=10)
 
 
-class Step6or24Days(BaseModel):
+class Step6or24Days(FrozenModel):
     __root__: int = Field(ge=3, le=10)
 
 
