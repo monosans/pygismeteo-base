@@ -7,12 +7,14 @@ try:
 except ImportError:  # pragma: no cover
     from pydantic import BaseModel, Field  # type: ignore[assignment]
 
+from . import enums
+
 
 class Precipitation(BaseModel):
     type_ext: Optional[int] = None
-    intensity: int
+    intensity: enums.PrecipitationIntensity
     amount: float
-    type: int
+    type: enums.PrecipitationType
 
 
 class HPa(BaseModel):
@@ -51,7 +53,7 @@ class Description(BaseModel):
 
 
 class Cloudiness(BaseModel):
-    type: int
+    type: enums.CloudinessType
     percent: int
 
 
@@ -146,17 +148,17 @@ class Speed(BaseModel):
 
 class Max4(BaseModel):
     degree: Optional[int] = None
-    scale_8: Optional[int] = None
+    scale_8: Optional[enums.WindScale8] = None
 
 
 class Min4(BaseModel):
     degree: Optional[int] = None
-    scale_8: Optional[int] = None
+    scale_8: Optional[enums.WindScale8] = None
 
 
 class Avg2(BaseModel):
     degree: Optional[int] = None
-    scale_8: Optional[int] = None
+    scale_8: Optional[enums.WindScale8] = None
 
 
 class Direction(BaseModel):
@@ -174,14 +176,14 @@ class ModelItem(BaseModel):
     precipitation: Precipitation
     pressure: Pressure
     humidity: Humidity
-    gm: int
+    gm: enums.GeomagneticField
     description: Description
     cloudiness: Cloudiness
     date: Date
     phenomenon: Optional[int] = None
     radiation: Radiation
     city: int
-    kind: Optional[str] = None
+    kind: Optional[enums.WeatherDataType] = None
     storm: bool
     temperature: Temperature
     wind: Wind

@@ -7,6 +7,8 @@ try:
 except ImportError:  # pragma: no cover
     from pydantic import BaseModel, Field  # type: ignore[assignment]
 
+from .enums import GeographicObjectType
+
 
 class District(BaseModel):
     name: str
@@ -31,5 +33,5 @@ class Model(BaseModel):
     url: str
     name_p: str = Field(alias="nameP")
     name: str
-    kind: str
+    kind: GeographicObjectType
     country: Country
