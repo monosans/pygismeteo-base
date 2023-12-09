@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from .._pydantic import BaseModel, Field
-from .enums import GeographicObjectType
+from . import enums
 
 
 class District(BaseModel):
@@ -30,7 +30,7 @@ class ModelItem(BaseModel):
     name_p: str = Field(alias="nameP")
     name: str
     distance: float
-    kind: GeographicObjectType
+    kind: enums.GeographicObjectType
     country: Country
 
 
