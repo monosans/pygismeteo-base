@@ -9,7 +9,7 @@ from ._pydantic import BaseModel, Field, FrozenModel
 
 class Settings(BaseModel):
     lang: Optional[types.Lang] = Field(...)
-    token: Optional[str] = Field(...)
+    token: str = Field(...)
 
     class Config:
         anystr_strip_whitespace = True

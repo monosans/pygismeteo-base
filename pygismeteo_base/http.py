@@ -4,7 +4,7 @@ from typing import Generic, Optional, Tuple
 
 from typing_extensions import Any, TypeVar
 
-from . import constants, types, validators
+from . import types, validators
 
 T = TypeVar("T")
 
@@ -27,8 +27,7 @@ class BaseHttpClient(Generic[T]):
                 if params
                 else {"lang": self.settings.lang}
             )
-        token = self.settings.token or constants.DEFAULT_TOKEN
-        headers = {"X-Gismeteo-Token": token}
+        headers = {"X-Gismeteo-Token": self.settings.token}
         return params, headers
 
 
