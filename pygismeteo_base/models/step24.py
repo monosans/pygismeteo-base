@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from .._pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, RootModel
+
 from . import enums
 
 
@@ -186,5 +187,8 @@ class ModelItem(BaseModel):
     icon: str
 
 
-class Model(BaseModel):
-    __root__: List[ModelItem]
+Model = RootModel[List[ModelItem]]
+
+
+class Response(BaseModel):
+    response: Model

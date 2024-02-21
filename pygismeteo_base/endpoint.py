@@ -12,7 +12,7 @@ class EndpointABC(Generic[http.THttpClient], metaclass=ABCMeta):
     def __init__(self, session: http.THttpClient) -> None:
         self._session = session
 
-    @property
+    @staticmethod
     @abstractmethod
-    def _endpoint(self) -> str:
+    def _endpoint() -> str:
         pass

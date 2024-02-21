@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from abc import ABCMeta, abstractmethod
-from typing import Type, Union
+from typing import Type
 
+from pydantic import TypeAdapter
 from typing_extensions import override
 
 from .. import models, types, validators
@@ -11,78 +12,74 @@ from .. import models, types, validators
 class StepNMixin(metaclass=ABCMeta):
     __slots__ = ()
 
-    @property
+    @staticmethod
     @abstractmethod
-    def _endpoint(self) -> str:
+    def _endpoint() -> str:
         pass
 
-    @property
+    @staticmethod
     @abstractmethod
-    def _model(self) -> types.StepNModel:
+    def _model() -> types.StepNResponse:
         pass
 
-    @property
+    @staticmethod
     @abstractmethod
-    def _days_validator(
-        self,
-    ) -> Type[
-        Union[validators.Step3Days, validators.Step6Days, validators.Step24Days]
-    ]:
+    def _days_validator() -> TypeAdapter[int]:
         pass
 
 
 class Step3Mixin(StepNMixin):
     __slots__ = ()
 
-    @property
+    @staticmethod
     @override
-    def _endpoint(self) -> str:
+    def _endpoint() -> str:
         return "weather/forecast"
 
-    @property
+    @staticmethod
     @override
-    def _model(self) -> Type[models.step3.Model]:
-        return models.step3.Model
+    def _model() -> Type[models.step3.Response]:
+        return models.step3.Response
 
-    @property
+    @staticmethod
     @override
-    def _days_validator(self) -> Type[validators.Step3Days]:
+    def _days_validator() -> TypeAdapter[int]:
         return validators.Step3Days
 
 
 class Step6Mixin(StepNMixin):
     __slots__ = ()
 
-    @property
+    @staticmethod
     @override
-    def _endpoint(self) -> str:
+    def _endpoint() -> str:
         return "weather/forecast/by_day_part"
 
-    @property
+    @staticmethod
     @override
-    def _model(self) -> Type[models.step6.Model]:
-        return models.step6.Model
+    def _model() -> Type[models.step6.Response]:
+        return models.step6.Response
 
-    @property
+    @staticmethod
     @override
-    def _days_validator(self) -> Type[validators.Step6Days]:
+    def _days_validator() -> TypeAdapter[int]:
         return validators.Step6Days
 
 
 class Step24Mixin(StepNMixin):
     __slots__ = ()
 
-    @property
+    @staticmethod
     @override
-    def _endpoint(self) -> str:
+    def _endpoint() -> str:
         return "weather/forecast/aggregate"
 
-    @property
+    @staticmethod
     @override
-    def _model(self) -> Type[models.step24.Model]:
-        return models.step24.Model
+    def _model() -> Type[models.step24.Response]:
+        return models.step24.Response
 
-    @property
+    @staticmethod
     @override
-    def _days_validator(self) -> Type[validators.Step24Days]:
+    def _days_validator() -> TypeAdapter[int]:
         return validators.Step24Days

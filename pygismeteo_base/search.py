@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from ipaddress import IPv4Address
-from typing import Union
+from typing import Dict, Union
 
+from pydantic import validate_call
 from typing_extensions import override
 
 from . import http, types, validators
@@ -12,31 +13,30 @@ from .endpoint import EndpointABC
 class SearchBase(EndpointABC[http.THttpClient]):
     __slots__ = ()
 
-    @property
+    @staticmethod
     @override
-    def _endpoint(self) -> str:
+    def _endpoint() -> str:
         return "search/cities"
 
     @staticmethod
+    @validate_call
     def _get_params_by_coordinates(
-        latitude: float, longitude: float, *, limit: types.SearchLimit
-    ) -> types.Params:
-        coords_validator = validators.Coordinates(
-            latitude=latitude, longitude=longitude
-        )
-        limit_validator = validators.SearchLimit.parse_obj(limit)
+        latitude: types.Latitude,
+        longitude: types.Longitude,
+        *,
+        limit: types.SearchLimit,
+    ) -> Dict[str, str]:
         return {
-            "latitude": str(coords_validator.latitude),
-            "longitude": str(coords_validator.longitude),
-            "limit": str(limit_validator.__root__),
+            "latitude": str(latitude),
+            "longitude": str(longitude),
+            "limit": str(limit),
         }
 
     @staticmethod
-    def _get_params_by_ip(ip: Union[IPv4Address, str]) -> types.Params:
-        ip_validator = validators.IPAddress.parse_obj(ip)
-        return {"ip": str(ip_validator.__root__)}
+    def _get_params_by_ip(ip: Union[IPv4Address, str]) -> Dict[str, str]:
+        return {"ip": str(validators.IPv4Address.validate_python(ip))}
 
     @staticmethod
-    def _get_params_by_query(query: str) -> types.Params:
-        query_validator = validators.Query.parse_obj(query)
-        return {"query": query_validator.__root__}
+    @validate_call
+    def _get_params_by_query(query: str) -> Dict[str, str]:
+        return {"query": query}

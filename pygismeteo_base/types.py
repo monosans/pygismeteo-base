@@ -1,67 +1,38 @@
 from __future__ import annotations
 
-from typing import Mapping, Optional, Type, Union
+from typing import MutableMapping, Optional, Type, Union
 
-from typing_extensions import Literal, TypeAlias, TypeVar
+import annotated_types as at
+from typing_extensions import Annotated, Literal, TypeAlias, TypeVar
 
 from . import models
 
-Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
-"""Языки, поддерживаемые Gismeteo API."""
-Step3Days: TypeAlias = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-"""Допустимые значения аргумента days у погоды с шагом 3 часа."""
-Step6or24Days: TypeAlias = Literal[3, 4, 5, 6, 7, 8, 9, 10]
-Step6Days: TypeAlias = Step6or24Days
-"""Допустимые значения аргумента days у погоды с шагом 6 часов."""
-Step24Days: TypeAlias = Step6or24Days
-"""Допустимые значения аргумента days у погоды с шагом 24 часа."""
-StepNDays: TypeAlias = Union[Step3Days, Step6Days, Step24Days]
-Params: TypeAlias = Optional[Mapping[str, str]]
-Headers: TypeAlias = Optional[Mapping[str, str]]
-SearchLimit: TypeAlias = Literal[
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-    32,
-    33,
-    34,
-    35,
-    36,
-]
-"""Допустимые значения аргумента limit у поиска по координатам."""
+Params: TypeAlias = Optional[MutableMapping[str, str]]
 
-StepNModel: TypeAlias = Type[
-    Union[models.step3.Model, models.step6.Model, models.step24.Model]
+Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
+"""Поддерживаемые Gismeteo API языки."""
+LocalityID: TypeAlias = Annotated[int, at.Ge(1)]
+"""ID географического объекта."""
+Latitude: TypeAlias = Annotated[Union[int, float], at.Ge(-90), at.Le(90)]
+"""Широта."""
+Longitude: TypeAlias = Annotated[Union[int, float], at.Ge(-180), at.Le(180)]
+"""Долгота."""
+SearchLimit: TypeAlias = Annotated[int, at.Ge(1), at.Le(36)]
+"""Ограничение количества географических объектов у поиска по координатам."""
+
+Step6or24Days: TypeAlias = Annotated[int, at.Ge(3), at.Le(10)]
+Step3Days: TypeAlias = Annotated[int, at.Ge(1), at.Le(10)]
+"""Количество дней у погоды с шагом 3 часа."""
+Step6Days: TypeAlias = Step6or24Days
+"""Количество дней у погоды с шагом 6 часов."""
+Step24Days: TypeAlias = Step6or24Days
+"""Количество дней у погоды с шагом 24 часов."""
+StepNDays: TypeAlias = Union[Step3Days, Step6Days, Step24Days]
+StepNResponse: TypeAlias = Type[
+    Union[models.step3.Response, models.step6.Response, models.step24.Response]
 ]
-TDays = TypeVar("TDays", Step3Days, Step6Days, Step24Days)
+
+TStepNDays = TypeVar("TStepNDays", Step3Days, Step6Days, Step24Days)
 TStepNModel = TypeVar(
     "TStepNModel", models.step3.Model, models.step6.Model, models.step24.Model
 )
