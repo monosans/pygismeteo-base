@@ -3,7 +3,7 @@
 [![CI](https://github.com/monosans/pygismeteo-base/actions/workflows/ci.yml/badge.svg)](https://github.com/monosans/pygismeteo-base/actions/workflows/ci.yml)
 [![Downloads](https://static.pepy.tech/badge/pygismeteo-base)](https://pepy.tech/project/pygismeteo-base)
 
-База для [pygismeteo](https://github.com/monosans/pygismeteo) и [aiopygismeteo](https://github.com/monosans/aiopygismeteo).
+Внутренняя библиотека для [pygismeteo](https://github.com/monosans/pygismeteo) и [aiopygismeteo](https://github.com/monosans/aiopygismeteo).
 
 ## License / Лицензия
 
