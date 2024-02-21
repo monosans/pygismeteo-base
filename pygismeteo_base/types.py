@@ -26,7 +26,7 @@ Step3Days: TypeAlias = Annotated[int, at.Ge(1), at.Le(10)]
 Step6Days: TypeAlias = Step6or24Days
 """Количество дней у погоды с шагом 6 часов."""
 Step24Days: TypeAlias = Step6or24Days
-"""Количество дней у погоды с шагом 24 часов."""
+"""Количество дней у погоды с шагом 24 часа."""
 StepNDays: TypeAlias = Union[Step3Days, Step6Days, Step24Days]
 StepNResponse: TypeAlias = Type[
     Union[models.step3.Response, models.step6.Response, models.step24.Response]
