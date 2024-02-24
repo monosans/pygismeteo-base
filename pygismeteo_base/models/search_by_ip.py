@@ -2,28 +2,29 @@ from __future__ import annotations
 
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from . import enums
+from ._base import FrozenModel
 
 
-class District(BaseModel):
+class District(FrozenModel):
     name: str
     name_p: str = Field(alias="nameP")
 
 
-class SubDistrict(BaseModel):
+class SubDistrict(FrozenModel):
     name: str
     name_p: str = Field(alias="nameP")
 
 
-class Country(BaseModel):
+class Country(FrozenModel):
     name: str
     code: str
     name_p: str = Field(alias="nameP")
 
 
-class Model(BaseModel):
+class Model(FrozenModel):
     district: Optional[District] = None
     id: int
     sub_district: Optional[SubDistrict] = None
@@ -34,5 +35,5 @@ class Model(BaseModel):
     country: Country
 
 
-class Response(BaseModel):
+class Response(FrozenModel):
     response: Model

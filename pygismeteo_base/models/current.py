@@ -2,12 +2,13 @@ from __future__ import annotations
 
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from . import enums
+from ._base import FrozenModel
 
 
-class Precipitation(BaseModel):
+class Precipitation(FrozenModel):
     type_ext: Optional[int] = None
     intensity: enums.PrecipitationIntensity
     correction: Optional[bool] = None
@@ -16,38 +17,38 @@ class Precipitation(BaseModel):
     type: enums.PrecipitationType
 
 
-class Pressure(BaseModel):
+class Pressure(FrozenModel):
     h_pa: Optional[int] = None
     mm_hg_atm: Optional[int] = None
     in_hg: Optional[float] = None
 
 
-class Humidity(BaseModel):
+class Humidity(FrozenModel):
     percent: Optional[int] = None
 
 
-class Direction(BaseModel):
+class Direction(FrozenModel):
     degree: Optional[int] = None
     scale_8: Optional[enums.WindScale8] = None
 
 
-class Speed(BaseModel):
+class Speed(FrozenModel):
     km_h: int
     m_s: int
     mi_h: int
 
 
-class Wind(BaseModel):
+class Wind(FrozenModel):
     direction: Direction
     speed: Speed
 
 
-class Cloudiness(BaseModel):
+class Cloudiness(FrozenModel):
     type: enums.CloudinessType
     percent: int
 
 
-class Date(BaseModel):
+class Date(FrozenModel):
     utc: str = Field(alias="UTC")
     local: str
     time_zone_offset: int
@@ -55,37 +56,37 @@ class Date(BaseModel):
     unix: int
 
 
-class Radiation(BaseModel):
+class Radiation(FrozenModel):
     uvb_index: Optional[int] = None
     uvb: Optional[int] = Field(default=None, alias="UVB")
 
 
-class Comfort(BaseModel):
+class Comfort(FrozenModel):
     c: float = Field(alias="C")
     f: float = Field(alias="F")
 
 
-class Water(BaseModel):
+class Water(FrozenModel):
     c: float = Field(alias="C")
     f: float = Field(alias="F")
 
 
-class Air(BaseModel):
+class Air(FrozenModel):
     c: float = Field(alias="C")
     f: float = Field(alias="F")
 
 
-class Temperature(BaseModel):
+class Temperature(FrozenModel):
     comfort: Comfort
     water: Water
     air: Air
 
 
-class Description(BaseModel):
+class Description(FrozenModel):
     full: str
 
 
-class Model(BaseModel):
+class Model(FrozenModel):
     precipitation: Precipitation
     pressure: Pressure
     humidity: Humidity
@@ -103,5 +104,5 @@ class Model(BaseModel):
     description: Description
 
 
-class Response(BaseModel):
+class Response(FrozenModel):
     response: Model

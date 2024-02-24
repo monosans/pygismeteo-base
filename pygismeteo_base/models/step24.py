@@ -1,87 +1,88 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional, Tuple
 
-from pydantic import BaseModel, Field, RootModel
+from pydantic import ConfigDict, Field, RootModel
 
 from . import enums
+from ._base import FrozenModel
 
 
-class Precipitation(BaseModel):
+class Precipitation(FrozenModel):
     type_ext: Optional[int] = None
     intensity: enums.PrecipitationIntensity
     amount: float
     type: enums.PrecipitationType
 
 
-class HPa(BaseModel):
+class HPa(FrozenModel):
     max: int
     min: int
 
 
-class MmHgAtm(BaseModel):
+class MmHgAtm(FrozenModel):
     max: int
     min: int
 
 
-class InHg(BaseModel):
+class InHg(FrozenModel):
     max: float
     min: float
 
 
-class Pressure(BaseModel):
+class Pressure(FrozenModel):
     h_pa: HPa
     mm_hg_atm: MmHgAtm
     in_hg: InHg
 
 
-class Percent(BaseModel):
+class Percent(FrozenModel):
     max: int
     min: int
     avg: int
 
 
-class Humidity(BaseModel):
+class Humidity(FrozenModel):
     percent: Percent
 
 
-class Description(BaseModel):
+class Description(FrozenModel):
     full: str
 
 
-class Cloudiness(BaseModel):
+class Cloudiness(FrozenModel):
     type: enums.CloudinessType
     percent: int
 
 
-class Date(BaseModel):
+class Date(FrozenModel):
     utc: str = Field(alias="UTC")
     local: str
     time_zone_offset: int
     unix: int
 
 
-class Radiation(BaseModel):
+class Radiation(FrozenModel):
     max: Optional[int] = None
     max_index: Optional[int] = None
 
 
-class Max(BaseModel):
+class Max(FrozenModel):
     c: float = Field(alias="C")
     f: float = Field(alias="F")
 
 
-class Min(BaseModel):
+class Min(FrozenModel):
     c: float = Field(alias="C")
     f: float = Field(alias="F")
 
 
-class Comfort(BaseModel):
+class Comfort(FrozenModel):
     max: Max
     min: Min
 
 
-class Max1(BaseModel):
+class Max1(FrozenModel):
     c: Optional[float] = Field(default=None, alias="C")
     f: Optional[float] = Field(default=None, alias="F")
 
@@ -89,12 +90,12 @@ class Max1(BaseModel):
 Min1 = Min
 
 
-class Water(BaseModel):
+class Water(FrozenModel):
     max: Max1
     min: Min
 
 
-class Max2(BaseModel):
+class Max2(FrozenModel):
     c: float = Field(alias="C")
     f: float = Field(alias="F")
 
@@ -102,74 +103,74 @@ class Max2(BaseModel):
 Min2 = Min
 
 
-class Avg(BaseModel):
+class Avg(FrozenModel):
     c: float = Field(alias="C")
     f: float = Field(alias="F")
 
 
-class Air(BaseModel):
+class Air(FrozenModel):
     max: Max2
     min: Min
     avg: Avg
 
 
-class Temperature(BaseModel):
+class Temperature(FrozenModel):
     comfort: Comfort
     water: Water
     air: Air
 
 
-class Max3(BaseModel):
+class Max3(FrozenModel):
     km_h: int
     m_s: int
     mi_h: int
 
 
-class Min3(BaseModel):
+class Min3(FrozenModel):
     km_h: int
     m_s: int
     mi_h: int
 
 
-class Avg1(BaseModel):
+class Avg1(FrozenModel):
     km_h: Optional[int] = None
     m_s: Optional[int] = None
     mi_h: Optional[int] = None
 
 
-class Speed(BaseModel):
+class Speed(FrozenModel):
     max: Max3
     min: Min3
     avg: Avg1
 
 
-class Max4(BaseModel):
+class Max4(FrozenModel):
     degree: Optional[int] = None
     scale_8: Optional[enums.WindScale8] = None
 
 
-class Min4(BaseModel):
+class Min4(FrozenModel):
     degree: Optional[int] = None
     scale_8: Optional[enums.WindScale8] = None
 
 
-class Avg2(BaseModel):
+class Avg2(FrozenModel):
     degree: Optional[int] = None
     scale_8: Optional[enums.WindScale8] = None
 
 
-class Direction(BaseModel):
+class Direction(FrozenModel):
     max: Max4
     min: Min4
     avg: Avg2
 
 
-class Wind(BaseModel):
+class Wind(FrozenModel):
     speed: Speed
     direction: Direction
 
 
-class ModelItem(BaseModel):
+class ModelItem(FrozenModel):
     precipitation: Precipitation
     pressure: Pressure
     humidity: Humidity
@@ -187,8 +188,9 @@ class ModelItem(BaseModel):
     icon: str
 
 
-Model = RootModel[List[ModelItem]]
+class Model(RootModel[Tuple[ModelItem, ...]]):
+    model_config = ConfigDict(frozen=True)
 
 
-class Response(BaseModel):
+class Response(FrozenModel):
     response: Model
