@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "pygismeteo-base"
 version = "5.1.0"
-description = "Base for pygismeteo and aiopygismeteo"
+description = "Internal library for pygismeteo and aiopygismeteo"
 license = "MIT"
 authors = ["monosans <hsyqixco@protonmail.com>"]
 readme = "README.md"

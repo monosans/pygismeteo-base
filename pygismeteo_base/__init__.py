@@ -1,3 +1,1 @@
-"""База для pygismeteo и aiopygismeteo."""
-
-from __future__ import annotations
+"""Внутренняя библиотека для pygismeteo и aiopygismeteo."""
