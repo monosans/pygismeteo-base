@@ -3,7 +3,7 @@ from __future__ import annotations
 import ipaddress
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict, TypeAdapter
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, TypeAdapter
 
 from . import types
 
@@ -13,6 +13,7 @@ class Settings(BaseModel):
         str_strip_whitespace=True, validate_assignment=True
     )
 
+    base_url: HttpUrl = HttpUrl("https://api.gismeteo.net/v2")
     lang: Optional[types.Lang]
     token: str
 

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core", "mypy[mypyc]", "pydantic"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
@@ -27,6 +27,10 @@ classifiers = [
   "Topic :: Software Development",
   "Typing :: Typed",
 ]
+
+[tool.poetry.build]
+script = "build.py"
+generate-setup-file = true
 
 [tool.poetry.dependencies]
 python = ">=3.8"
