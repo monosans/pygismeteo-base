@@ -26,7 +26,10 @@ class BaseHttpClient(Generic[T]):
                 params = {"lang": self.settings.lang}
             else:
                 params["lang"] = self.settings.lang
-        headers = {"X-Gismeteo-Token": self.settings.token}
+        headers = {
+            "Accept": "application/json",
+            "X-Gismeteo-Token": self.settings.token,
+        }
         return params, headers
 
 
