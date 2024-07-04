@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import ipaddress
-from typing import Optional
+from typing import Optional, Union
 
 from pydantic import BaseModel, ConfigDict, TypeAdapter
 
@@ -18,9 +18,9 @@ class Settings(BaseModel):
 
 
 IPv4Address = TypeAdapter(ipaddress.IPv4Address)
-Latitude = TypeAdapter(types.Latitude)
+Latitude: TypeAdapter[Union[int, float]] = TypeAdapter(types.Latitude)
 LocalityID = TypeAdapter(types.LocalityID)
-Longitude = TypeAdapter(types.Longitude)
+Longitude: TypeAdapter[Union[int, float]] = TypeAdapter(types.Longitude)
 
 Step3Days = TypeAdapter(types.Step3Days)
 Step6or24Days = TypeAdapter(types.Step6or24Days)
