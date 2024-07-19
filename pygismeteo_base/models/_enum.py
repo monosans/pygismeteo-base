@@ -15,6 +15,7 @@ class IntEnum(int, Enum):
         def value(self) -> int: ...
 
         def __new__(cls, value: int) -> Self: ...
+
     else:
 
         def __new__(cls, value: int, *_: Any) -> Self:
@@ -35,6 +36,7 @@ class StrEnum(str, Enum):
         def value(self) -> str: ...
 
         def __new__(cls, value: str) -> Self: ...
+
     else:
 
         def __new__(cls, value: str, *_: Any) -> Self:
