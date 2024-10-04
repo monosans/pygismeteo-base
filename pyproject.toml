@@ -26,7 +26,7 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Typing :: Typed",
 ]
-dependencies = ["annotated-types>=0.2", "pydantic>=2", "typing-extensions>=4.4"]
+dependencies = ["pydantic>=2", "typing-extensions>=4.4"]
 urls.repository = "https://github.com/monosans/pygismeteo-base"
 
 [tool.hatch.build.targets.sdist]

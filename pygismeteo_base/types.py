@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import MutableMapping, Optional, Type, Union
 
-import annotated_types as at
+from pydantic import Field
 from typing_extensions import Annotated, Literal, TypeAlias, TypeVar
 
 from . import models
@@ -11,17 +11,17 @@ Params: TypeAlias = Optional[MutableMapping[str, str]]
 
 Lang: TypeAlias = Literal["ru", "en", "ua", "lt", "lv", "pl", "ro"]
 """Поддерживаемые Gismeteo API языки."""
-LocalityID: TypeAlias = Annotated[int, at.Ge(1)]
+LocalityID: TypeAlias = Annotated[int, Field(ge=1)]
 """ID географического объекта."""
-Latitude: TypeAlias = Annotated[Union[int, float], at.Ge(-90), at.Le(90)]
+Latitude: TypeAlias = Annotated[Union[int, float], Field(ge=-90, le=90)]
 """Широта."""
-Longitude: TypeAlias = Annotated[Union[int, float], at.Ge(-180), at.Le(180)]
+Longitude: TypeAlias = Annotated[Union[int, float], Field(ge=-180, le=180)]
 """Долгота."""
-SearchLimit: TypeAlias = Annotated[int, at.Ge(1), at.Le(36)]
+SearchLimit: TypeAlias = Annotated[int, Field(ge=1, le=36)]
 """Ограничение количества географических объектов у поиска по координатам."""
 
-Step6or24Days: TypeAlias = Annotated[int, at.Ge(3), at.Le(10)]
-Step3Days: TypeAlias = Annotated[int, at.Ge(1), at.Le(10)]
+Step6or24Days: TypeAlias = Annotated[int, Field(ge=3, le=10)]
+Step3Days: TypeAlias = Annotated[int, Field(ge=1, le=10)]
 """Количество дней у погоды с шагом 3 часа."""
 Step6Days: TypeAlias = Step6or24Days
 """Количество дней у погоды с шагом 6 часов."""
