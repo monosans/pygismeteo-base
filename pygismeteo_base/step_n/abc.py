@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Dict, Tuple
 
 from pydantic import TypeAdapter
 
@@ -29,7 +28,7 @@ class StepNABC(EndpointABC[http.THttpClient]):
         longitude: types.Longitude,
         *,
         days: types.StepNDays,
-    ) -> Tuple[str, Dict[str, str]]:
+    ) -> tuple[str, dict[str, str]]:
         # TODO(monosans): use validate_call when it gets generic support
         # https://github.com/pydantic/pydantic/issues/7796
         return self._endpoint(), {
@@ -43,7 +42,7 @@ class StepNABC(EndpointABC[http.THttpClient]):
         id: types.LocalityID,  # noqa: A002
         *,
         days: types.StepNDays,
-    ) -> Tuple[str, Dict[str, str]]:
+    ) -> tuple[str, dict[str, str]]:
         # TODO(monosans): use validate_call when it gets generic support
         # https://github.com/pydantic/pydantic/issues/7796
         return (

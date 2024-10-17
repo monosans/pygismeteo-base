@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from ipaddress import IPv4Address
-from typing import Dict, Union
+from typing import Union
 
 from pydantic import validate_call
 from typing_extensions import override
@@ -25,7 +25,7 @@ class SearchBase(EndpointABC[http.THttpClient]):
         longitude: types.Longitude,
         *,
         limit: types.SearchLimit,
-    ) -> Dict[str, str]:
+    ) -> dict[str, str]:
         return {
             "latitude": str(latitude),
             "longitude": str(longitude),
@@ -33,10 +33,10 @@ class SearchBase(EndpointABC[http.THttpClient]):
         }
 
     @staticmethod
-    def _get_params_by_ip(ip: Union[IPv4Address, str]) -> Dict[str, str]:
+    def _get_params_by_ip(ip: Union[IPv4Address, str]) -> dict[str, str]:
         return {"ip": str(validators.IPv4Address.validate_python(ip))}
 
     @staticmethod
     @validate_call
-    def _get_params_by_query(query: str) -> Dict[str, str]:
+    def _get_params_by_query(query: str) -> dict[str, str]:
         return {"query": query}

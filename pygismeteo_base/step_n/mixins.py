@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from abc import ABCMeta, abstractmethod
-from typing import Type
 
 from pydantic import TypeAdapter
 from typing_extensions import override
@@ -38,7 +37,7 @@ class Step3Mixin(StepNMixin):
 
     @staticmethod
     @override
-    def _model() -> Type[models.step3.Response]:
+    def _model() -> type[models.step3.Response]:
         return models.step3.Response
 
     @staticmethod
@@ -57,7 +56,7 @@ class Step6Mixin(StepNMixin):
 
     @staticmethod
     @override
-    def _model() -> Type[models.step6.Response]:
+    def _model() -> type[models.step6.Response]:
         return models.step6.Response
 
     @staticmethod
@@ -76,7 +75,7 @@ class Step24Mixin(StepNMixin):
 
     @staticmethod
     @override
-    def _model() -> Type[models.step24.Response]:
+    def _model() -> type[models.step24.Response]:
         return models.step24.Response
 
     @staticmethod

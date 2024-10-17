@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from typing import MutableMapping, Optional, Type, Union
+from collections.abc import MutableMapping
+from typing import Annotated, Optional, Union
 
 from pydantic import Field
-from typing_extensions import Annotated, Literal, TypeAlias, TypeVar
+from typing_extensions import Literal, TypeAlias, TypeVar
 
 from . import models
 
@@ -28,7 +29,7 @@ Step6Days: TypeAlias = Step6or24Days
 Step24Days: TypeAlias = Step6or24Days
 """Количество дней у погоды с шагом 24 часа."""
 StepNDays: TypeAlias = Union[Step3Days, Step6Days, Step24Days]
-StepNResponse: TypeAlias = Type[
+StepNResponse: TypeAlias = type[
     Union[models.step3.Response, models.step6.Response, models.step24.Response]
 ]
 

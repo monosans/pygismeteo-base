@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Dict, Generic, Optional, Tuple
+from typing import Generic, Optional
 
 from typing_extensions import Any, TypeVar
 
@@ -20,7 +20,7 @@ class BaseHttpClient(Generic[T]):
 
     def _get_params_and_headers(
         self, params: types.Params
-    ) -> Tuple[types.Params, Dict[str, str]]:
+    ) -> tuple[types.Params, dict[str, str]]:
         if self.settings.lang:
             if params is None:
                 params = {"lang": self.settings.lang}

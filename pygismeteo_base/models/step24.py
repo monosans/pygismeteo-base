@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional, Tuple
+from typing import Optional
 
 from pydantic import ConfigDict, Field, RootModel
 
@@ -188,7 +188,7 @@ class ModelItem(FrozenModel):
     icon: str
 
 
-class Model(RootModel[Tuple[ModelItem, ...]]):
+class Model(RootModel[tuple[ModelItem, ...]]):
     model_config = ConfigDict(frozen=True)
 
 
