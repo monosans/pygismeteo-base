@@ -31,5 +31,5 @@ urls.repository = "https://github.com/monosans/pygismeteo-base"
 [tool.hatch.build.targets.sdist]
 include = ["pygismeteo_base"]
 
-[tool.uv]
-dev-dependencies = ["mypy[faster-cache]==1.13", "ruff==0.7.1"]
+[dependency-groups]
+dev = ["mypy[faster-cache]==1.13", "ruff==0.7.1"]
