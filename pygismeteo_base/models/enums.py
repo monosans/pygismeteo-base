@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 from typing_extensions import Any
 
-from ._enum import IntEnum, StrEnum
+from pygismeteo_base.models._enum import IntEnum, StrEnum
 
 
 @dataclass(frozen=True)

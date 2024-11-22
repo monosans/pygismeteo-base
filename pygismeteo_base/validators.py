@@ -5,7 +5,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, TypeAdapter
 
-from . import types
+from pygismeteo_base import types
 
 
 class Settings(BaseModel):

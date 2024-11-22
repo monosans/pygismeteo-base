@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from . import (
+from pygismeteo_base.models import (
     current,
     enums,
     search_by_coordinates,

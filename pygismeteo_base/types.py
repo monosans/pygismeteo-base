@@ -6,7 +6,7 @@ from typing import Annotated, Optional, Union
 from pydantic import Field
 from typing_extensions import Literal, TypeAlias, TypeVar
 
-from . import models
+from pygismeteo_base import models
 
 Params: TypeAlias = Optional[MutableMapping[str, str]]
 

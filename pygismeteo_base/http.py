@@ -4,7 +4,7 @@ from typing import Generic, Optional
 
 from typing_extensions import Any, TypeVar
 
-from . import types, validators
+from pygismeteo_base import types, validators
 
 T = TypeVar("T")
 

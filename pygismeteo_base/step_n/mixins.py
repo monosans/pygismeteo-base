@@ -5,7 +5,7 @@ from abc import ABCMeta, abstractmethod
 from pydantic import TypeAdapter
 from typing_extensions import override
 
-from .. import models, types, validators
+from pygismeteo_base import models, types, validators
 
 
 class StepNMixin(metaclass=ABCMeta):

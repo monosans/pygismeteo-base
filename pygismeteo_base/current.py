@@ -3,8 +3,8 @@ from __future__ import annotations
 from pydantic import validate_call
 from typing_extensions import override
 
-from . import http, types
-from .endpoint import EndpointABC
+from pygismeteo_base import http, types
+from pygismeteo_base.endpoint import EndpointABC
 
 
 class CurrentBase(EndpointABC[http.THttpClient]):

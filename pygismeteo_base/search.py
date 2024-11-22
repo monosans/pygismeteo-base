@@ -6,8 +6,8 @@ from typing import Union
 from pydantic import validate_call
 from typing_extensions import override
 
-from . import http, types, validators
-from .endpoint import EndpointABC
+from pygismeteo_base import http, types, validators
+from pygismeteo_base.endpoint import EndpointABC
 
 
 class SearchBase(EndpointABC[http.THttpClient]):

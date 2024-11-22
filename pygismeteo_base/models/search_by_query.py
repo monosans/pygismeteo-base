@@ -4,8 +4,8 @@ from typing import Optional
 
 from pydantic import ConfigDict, Field, RootModel
 
-from . import enums
-from ._base import FrozenModel
+from pygismeteo_base.models import enums
+from pygismeteo_base.models._base import FrozenModel
 
 
 class District(FrozenModel):

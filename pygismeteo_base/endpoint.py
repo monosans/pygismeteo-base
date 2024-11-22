@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABCMeta, abstractmethod
 from typing import Generic
 
-from . import http
+from pygismeteo_base import http
 
 
 class EndpointABC(Generic[http.THttpClient], metaclass=ABCMeta):
