@@ -23,7 +23,7 @@ class IntEnum(int, Enum):
             member._value_ = value
             return member
 
-    __str__ = int.__str__ if int.__str__ is not object.__str__ else int.__repr__
+    __str__ = int.__repr__
     __format__ = int.__format__  # type: ignore[assignment]
 
 
@@ -51,5 +51,5 @@ class StrEnum(str, Enum):
     ) -> str:
         return name
 
-    __str__ = str.__str__ if str.__str__ is not object.__str__ else str.__repr__
+    __str__ = str.__str__
     __format__ = str.__format__  # type: ignore[assignment]
