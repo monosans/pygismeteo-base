@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 from typing_extensions import Any
 
-from pygismeteo_base.models._enum import IntEnum, StrEnum
+from pygismeteo_base._enum import IntEnum, StrEnum
 
 
 @dataclass(frozen=True)
@@ -24,7 +24,9 @@ class _DescriptionMixin:
         def __init__(
             self, _: Any, description_en: str, description_ru: str, /
         ) -> None:
-            self.description = Description(en=description_en, ru=description_ru)
+            self.description: Final = Description(
+                en=description_en, ru=description_ru
+            )
 
 
 class IntEnumWithDescription(_DescriptionMixin, IntEnum):

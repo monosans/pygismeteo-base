@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from pydantic import ConfigDict, Field, RootModel
+from pydantic import Field
 
 from pygismeteo_base.models import enums
-from pygismeteo_base.models._base import FrozenModel
+from pygismeteo_base.models._base import FrozenModel, FrozenRootModel
 
 
 class Precipitation(FrozenModel):
@@ -104,8 +104,7 @@ class ModelItem(FrozenModel):
     description: Description
 
 
-class Model(RootModel[tuple[ModelItem, ...]]):
-    model_config = ConfigDict(frozen=True)
+Model = FrozenRootModel[tuple[ModelItem, ...]]
 
 
 class Response(FrozenModel):
