@@ -25,5 +25,7 @@ class CurrentBase(EndpointABC[http.THttpClient]):
 
     @classmethod
     @validate_call
-    def _get_params_by_id(cls, id_: types.LocalityID, /) -> tuple[str, None]:
-        return f"{cls._endpoint}/{id_}", None
+    def _get_params_by_id(
+        cls, id_: types.LocalityID, /
+    ) -> tuple[str, dict[str, str]]:
+        return f"{cls._endpoint}/{id_}", {}
