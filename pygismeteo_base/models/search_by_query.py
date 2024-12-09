@@ -3,9 +3,10 @@ from __future__ import annotations
 from typing import Optional
 
 from pydantic import Field
+from typing_extensions import TypeAlias
 
 from pygismeteo_base.models import enums
-from pygismeteo_base.models._base import FrozenModel, FrozenRootModel
+from pygismeteo_base.models._base import FrozenModel
 
 
 class District(FrozenModel):
@@ -37,11 +38,11 @@ class ModelItem(FrozenModel):
     country: Country
 
 
-Model = FrozenRootModel[tuple[ModelItem, ...]]
+Model: TypeAlias = tuple[ModelItem, ...]
 
 
 class Items(FrozenModel):
-    items: Model = Field(default_factory=lambda: Model(()))
+    items: Model = Field(default=())
 
 
 class Response(FrozenModel):

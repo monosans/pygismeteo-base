@@ -3,9 +3,10 @@ from __future__ import annotations
 from typing import Optional
 
 from pydantic import Field
+from typing_extensions import TypeAlias
 
 from pygismeteo_base.models import enums
-from pygismeteo_base.models._base import FrozenModel, FrozenRootModel
+from pygismeteo_base.models._base import FrozenModel
 
 
 class Precipitation(FrozenModel):
@@ -104,7 +105,7 @@ class ModelItem(FrozenModel):
     description: Description
 
 
-Model = FrozenRootModel[tuple[ModelItem, ...]]
+Model: TypeAlias = tuple[ModelItem, ...]
 
 
 class Response(FrozenModel):
