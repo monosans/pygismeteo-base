@@ -42,7 +42,7 @@ Model: TypeAlias = tuple[ModelItem, ...]
 
 
 class Items(FrozenModel):
-    items: Model = Field(default=())
+    items: Model = ()
 
 
 class Response(FrozenModel):
