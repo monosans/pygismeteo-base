@@ -13,7 +13,7 @@ T = TypeVar("T")
 class BaseHttpClient(Generic[T]):
     __slots__ = ("base_url", "lang", "session", "token")
 
-    @validate_call
+    @validate_call(config={"arbitrary_types_allowed": True})
     def __init__(
         self,
         *,

@@ -14,7 +14,7 @@ class Step24Base(EndpointABC[http.THttpClient]):
     _endpoint: Final = "weather/forecast/aggregate"
 
     @classmethod
-    @validate_call
+    @validate_call(config={"arbitrary_types_allowed": True})
     def _get_params_by_coordinates(
         cls,
         latitude: types.Latitude,
@@ -29,7 +29,7 @@ class Step24Base(EndpointABC[http.THttpClient]):
         }
 
     @classmethod
-    @validate_call
+    @validate_call(config={"arbitrary_types_allowed": True})
     def _get_params_by_id(
         cls, id_: types.LocalityID, /, *, days: types.Step24Days
     ) -> tuple[str, dict[str, str]]:

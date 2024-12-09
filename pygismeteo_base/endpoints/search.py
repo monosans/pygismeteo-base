@@ -15,7 +15,7 @@ class SearchBase(EndpointABC[http.THttpClient]):
     _endpoint: Final = "search/cities"
 
     @classmethod
-    @validate_call
+    @validate_call(config={"arbitrary_types_allowed": True})
     def _get_params_by_coordinates(
         cls,
         latitude: types.Latitude,
@@ -30,13 +30,13 @@ class SearchBase(EndpointABC[http.THttpClient]):
         }
 
     @classmethod
-    @validate_call
+    @validate_call(config={"arbitrary_types_allowed": True})
     def _get_params_by_ip(
         cls, ip: IPv4Address, /
     ) -> tuple[str, dict[str, str]]:
         return cls._endpoint, {"ip": str(ip)}
 
     @classmethod
-    @validate_call
+    @validate_call(config={"arbitrary_types_allowed": True})
     def _get_params_by_query(cls, query: str, /) -> tuple[str, dict[str, str]]:
         return cls._endpoint, {"query": query}
