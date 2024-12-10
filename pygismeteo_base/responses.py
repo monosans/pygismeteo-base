@@ -19,7 +19,7 @@ class _SearchByCoordinates(TypedDict):
     response: models.search_by_coordinates.Model
 
 
-serach_by_coordinates: Final = TypeAdapter(
+search_by_coordinates: Final = TypeAdapter(
     _SearchByCoordinates, config={"frozen": True}
 )
 
