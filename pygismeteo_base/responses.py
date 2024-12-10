@@ -25,7 +25,7 @@ search_by_coordinates: Final = TypeAdapter(
 
 
 class _SearchByIp(TypedDict):
-    response: models.search_by_coordinates.Model
+    response: models.search_by_ip.Model
 
 
 search_by_ip: Final = TypeAdapter(_SearchByIp, config={"frozen": True})
