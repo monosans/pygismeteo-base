@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from typing import Final, Optional
+from typing import Optional
 
-from pydantic import Field, TypeAdapter
-from typing_extensions import TypeAlias, TypedDict
+from pydantic import Field
+from typing_extensions import TypeAlias
 
 from pygismeteo_base.models import enums
 from pygismeteo_base.models._base import FrozenModel
@@ -38,10 +38,3 @@ class ModelItem(FrozenModel):
 
 
 Model: TypeAlias = tuple[ModelItem, ...]
-
-
-class _Response(TypedDict):
-    response: Model
-
-
-response_adapter: Final = TypeAdapter(_Response, config={"frozen": True})
