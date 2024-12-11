@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Final, Optional
 
 from pydantic import Field
 from typing_extensions import TypeAlias
@@ -88,7 +88,7 @@ class Max1(FrozenModel):
     f: Optional[float] = Field(default=None, alias="F")
 
 
-Min1 = Min
+Min1: Final = Min
 
 
 class Water(FrozenModel):
@@ -101,7 +101,7 @@ class Max2(FrozenModel):
     f: float = Field(alias="F")
 
 
-Min2 = Min
+Min2: Final = Min
 
 
 class Avg(FrozenModel):
