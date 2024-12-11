@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Final, Optional
+from typing import Optional
 
 from pydantic import Field
 from typing_extensions import TypeAlias
