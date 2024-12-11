@@ -88,7 +88,7 @@ class Max1(FrozenModel):
     f: Optional[float] = Field(default=None, alias="F")
 
 
-Min1: Final = Min
+Min1 = Min
 
 
 class Water(FrozenModel):
@@ -101,7 +101,7 @@ class Max2(FrozenModel):
     f: float = Field(alias="F")
 
 
-Min2: Final = Min
+Min2 = Min
 
 
 class Avg(FrozenModel):
