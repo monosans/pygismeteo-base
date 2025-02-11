@@ -35,4 +35,4 @@ dev = ["mypy[faster-cache]==1.15.0", "ruff==0.9.5"]
 include = ["pygismeteo_base"]
 
 [tool.hatch.version]
-path = "pygismeteo_base/__init__.py"
+path = "src/pygismeteo_base/__init__.py"
