@@ -1,9 +1,10 @@
 [build-system]
 build-backend = "uv_build"
-requires = ["uv-build>=0.7.19,<0.8.0"]
+requires = ["uv-build>=0.7.19,<0.8"]
 
 [project]
 name = "pygismeteo-base"
+version = "6.0.1"
 description = "Internal library for pygismeteo and aiopygismeteo"
 readme = "README.md"
 license = { text = "MIT" }
@@ -24,15 +25,8 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Typing :: Typed",
 ]
-dynamic = ["version"]
 dependencies = ["pydantic>=2", "typing-extensions>=4.4"]
 urls.repository = "https://github.com/monosans/pygismeteo-base"
 
 [dependency-groups]
 dev = ["mypy[faster-cache]==1.16.1", "ruff==0.12.2"]
-
-[tool.hatch.build.targets.sdist]
-include = ["pygismeteo_base"]
-
-[tool.hatch.version]
-path = "src/pygismeteo_base/__init__.py"
