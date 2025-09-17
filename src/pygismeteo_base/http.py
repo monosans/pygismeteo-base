@@ -31,7 +31,10 @@ class BaseHttpClient(Generic[T]):
         self, params: types.Params, /
     ) -> tuple[types.Params, dict[str, str]]:
         params["lang"] = self.lang
-        return params, {"X-Gismeteo-Token": self.token.get_secret_value()}
+        return params, {
+            "Accept": "application/json",
+            "X-Gismeteo-Token": self.token.get_secret_value(),
+        }
 
 
 THttpClient = TypeVar("THttpClient", bound=BaseHttpClient[Any])
