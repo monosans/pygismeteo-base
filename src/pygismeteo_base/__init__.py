@@ -2,6 +2,4 @@
 
 from __future__ import annotations
 
-from importlib.metadata import version as _version
-
-__version__ = _version(__name__)
+__version__ = "6.0.1"
