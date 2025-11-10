@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from collections.abc import MutableMapping
-from typing import Annotated, Union
+from typing import Annotated, TypeAlias
 
 from pydantic import Field
-from typing_extensions import TypeAlias
 
 from pygismeteo_base._enum import StrEnum
 
@@ -25,9 +24,9 @@ class Lang(StrEnum):
 
 LocalityID: TypeAlias = Annotated[int, Field(ge=1)]
 """ID географического объекта."""
-Latitude: TypeAlias = Annotated[Union[int, float], Field(ge=-90, le=90)]
+Latitude: TypeAlias = Annotated[int | float, Field(ge=-90, le=90)]
 """Широта."""
-Longitude: TypeAlias = Annotated[Union[int, float], Field(ge=-180, le=180)]
+Longitude: TypeAlias = Annotated[int | float, Field(ge=-180, le=180)]
 """Долгота."""
 SearchLimit: TypeAlias = Annotated[int, Field(ge=1, le=36)]
 """Ограничение количества географических объектов у поиска по координатам."""

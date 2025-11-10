@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import TypeAlias
 
 from pydantic import Field
-from typing_extensions import TypeAlias
 
 from pygismeteo_base.models import enums
 from pygismeteo_base.models._base import FrozenModel
@@ -26,9 +25,9 @@ class Country(FrozenModel):
 
 
 class ModelItem(FrozenModel):
-    district: Optional[District] = None
+    district: District | None = None
     id: int
-    sub_district: Optional[SubDistrict] = None
+    sub_district: SubDistrict | None = None
     url: str
     name_p: str = Field(alias="nameP")
     name: str

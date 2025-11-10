@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Final, Generic, Optional
+from typing import Final, Generic
 
 from pydantic import AnyHttpUrl, SecretStr, validate_call
 from typing_extensions import Any, TypeVar
@@ -20,7 +20,7 @@ class BaseHttpClient(Generic[T]):
         token: str,
         base_url: AnyHttpUrl,
         lang: types.Lang,
-        session: Optional[T],
+        session: T | None,
     ) -> None:
         self.token: Final = SecretStr(token)
         self.base_url: Final = base_url

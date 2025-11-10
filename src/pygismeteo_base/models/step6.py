@@ -1,19 +1,18 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import TypeAlias
 
 from pydantic import Field
-from typing_extensions import TypeAlias
 
 from pygismeteo_base.models import enums
 from pygismeteo_base.models._base import FrozenModel
 
 
 class Precipitation(FrozenModel):
-    type_ext: Optional[int] = None
+    type_ext: int | None = None
     intensity: enums.PrecipitationIntensity
-    correction: Optional[bool] = None
-    amount: Optional[float] = None
+    correction: bool | None = None
+    amount: float | None = None
     duration: int
     type: enums.PrecipitationType
 
@@ -25,12 +24,12 @@ class Pressure(FrozenModel):
 
 
 class Humidity(FrozenModel):
-    percent: Optional[int] = None
+    percent: int | None = None
 
 
 class Direction(FrozenModel):
-    degree: Optional[int] = None
-    scale_8: Optional[enums.WindScale8] = None
+    degree: int | None = None
+    scale_8: enums.WindScale8 | None = None
 
 
 class Speed(FrozenModel):
@@ -53,12 +52,12 @@ class Date(FrozenModel):
     utc: str = Field(alias="UTC")
     time_zone_offset: int
     local: str
-    hr_to_forecast: Optional[int] = None
+    hr_to_forecast: int | None = None
     unix: int
 
 
 class Radiation(FrozenModel):
-    uvb_index: Optional[int] = None
+    uvb_index: int | None = None
     uvb: int = Field(alias="UVB")
 
 
@@ -96,7 +95,7 @@ class ModelItem(FrozenModel):
     wind: Wind
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int] = None
+    phenomenon: int | None = None
     radiation: Radiation
     city: int
     kind: enums.WeatherDataType

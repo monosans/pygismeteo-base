@@ -1,16 +1,15 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import TypeAlias
 
 from pydantic import Field
-from typing_extensions import TypeAlias
 
 from pygismeteo_base.models import enums
 from pygismeteo_base.models._base import FrozenModel
 
 
 class Precipitation(FrozenModel):
-    type_ext: Optional[int] = None
+    type_ext: int | None = None
     intensity: enums.PrecipitationIntensity
     amount: float
     type: enums.PrecipitationType
@@ -64,8 +63,8 @@ class Date(FrozenModel):
 
 
 class Radiation(FrozenModel):
-    max: Optional[int] = None
-    max_index: Optional[int] = None
+    max: int | None = None
+    max_index: int | None = None
 
 
 class Max(FrozenModel):
@@ -84,8 +83,8 @@ class Comfort(FrozenModel):
 
 
 class Max1(FrozenModel):
-    c: Optional[float] = Field(default=None, alias="C")
-    f: Optional[float] = Field(default=None, alias="F")
+    c: float | None = Field(default=None, alias="C")
+    f: float | None = Field(default=None, alias="F")
 
 
 Min1 = Min
@@ -134,9 +133,9 @@ class Min3(FrozenModel):
 
 
 class Avg1(FrozenModel):
-    km_h: Optional[int] = None
-    m_s: Optional[int] = None
-    mi_h: Optional[int] = None
+    km_h: int | None = None
+    m_s: int | None = None
+    mi_h: int | None = None
 
 
 class Speed(FrozenModel):
@@ -146,18 +145,18 @@ class Speed(FrozenModel):
 
 
 class Max4(FrozenModel):
-    degree: Optional[int] = None
-    scale_8: Optional[enums.WindScale8] = None
+    degree: int | None = None
+    scale_8: enums.WindScale8 | None = None
 
 
 class Min4(FrozenModel):
-    degree: Optional[int] = None
-    scale_8: Optional[enums.WindScale8] = None
+    degree: int | None = None
+    scale_8: enums.WindScale8 | None = None
 
 
 class Avg2(FrozenModel):
-    degree: Optional[int] = None
-    scale_8: Optional[enums.WindScale8] = None
+    degree: int | None = None
+    scale_8: enums.WindScale8 | None = None
 
 
 class Direction(FrozenModel):
@@ -179,10 +178,10 @@ class ModelItem(FrozenModel):
     description: Description
     cloudiness: Cloudiness
     date: Date
-    phenomenon: Optional[int] = None
+    phenomenon: int | None = None
     radiation: Radiation
     city: int
-    kind: Optional[enums.WeatherDataType] = None
+    kind: enums.WeatherDataType | None = None
     storm: bool
     temperature: Temperature
     wind: Wind

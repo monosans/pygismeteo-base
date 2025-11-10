@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import Field
 
 from pygismeteo_base.models import enums
@@ -25,9 +23,9 @@ class Country(FrozenModel):
 
 
 class Model(FrozenModel):
-    district: Optional[District] = None
+    district: District | None = None
     id: int
-    sub_district: Optional[SubDistrict] = None
+    sub_district: SubDistrict | None = None
     url: str
     name_p: str = Field(alias="nameP")
     name: str
