@@ -37,3 +37,6 @@ only-include = ["src"]
 
 [tool.hatch.version]
 path = "src/pygismeteo_base/__init__.py"
+
+[tool.uv]
+exclude-newer = "3 days"
