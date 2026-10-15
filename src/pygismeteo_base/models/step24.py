@@ -14,6 +14,7 @@ class Precipitation(FrozenModel):
     """Осадки."""
 
     type_ext: int | None = None
+    """Больше не используется."""
     intensity: enums.PrecipitationIntensity
     amount: float
     """Количество осадков, мм."""
@@ -273,16 +274,18 @@ class ModelItem(FrozenModel):
     cloudiness: Cloudiness
     date: Date
     phenomenon: int | None = None
+    """Код погодного явления."""
     radiation: Radiation
     city: int
     """ID географического объекта."""
     kind: enums.WeatherDataType | None = None
     """Наблюдение или прогноз."""
     storm: bool
+    """`True`, если ожидается гроза."""
     temperature: Temperature
     wind: Wind
     icon: str
-    """Код значка погоды."""
+    """Имя значка из [набора иконок Гисметео](https://st.gismeteo.st/api/v2/icons/gismeteo-icons.zip)."""
 
 
 Model: TypeAlias = tuple[ModelItem, ...]

@@ -14,11 +14,14 @@ class Precipitation(FrozenModel):
     """Осадки."""
 
     type_ext: int | None = None
+    """Больше не используется."""
     intensity: enums.PrecipitationIntensity
     correction: bool | None = None
+    """Больше не используется, всегда `None`."""
     amount: float | None = None
     """Количество осадков, мм."""
     duration: int
+    """Больше не используется, всегда 0."""
     type: enums.PrecipitationType
 
 
@@ -93,7 +96,9 @@ class Radiation(FrozenModel):
     """Ультрафиолетовое излучение."""
 
     uvb_index: int | None = None
+    """То же, что `uvb`."""
     uvb: int = Field(alias="UVB")
+    """УФ-индекс в баллах, от 0 (низкий) до 11 и выше (экстремальный)."""
 
 
 class Comfort(FrozenModel):
@@ -144,19 +149,21 @@ class ModelItem(FrozenModel):
     pressure: Pressure
     humidity: Humidity
     icon: str
-    """Код значка погоды."""
+    """Имя значка из [набора иконок Гисметео](https://st.gismeteo.st/api/v2/icons/gismeteo-icons.zip)."""
     gm: enums.GeomagneticField
     """Геомагнитная обстановка."""
     wind: Wind
     cloudiness: Cloudiness
     date: Date
     phenomenon: int | None = None
+    """Код погодного явления."""
     radiation: Radiation
     city: int
     """ID географического объекта."""
     kind: enums.WeatherDataType
     """Наблюдение или прогноз."""
     storm: bool
+    """`True`, если ожидается гроза."""
     temperature: Temperature
     description: Description
 
