@@ -1,3 +1,5 @@
+"""Перечисления с описанием значений на русском и английском."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -8,10 +10,14 @@ from pygismeteo_base._enum import IntEnum, StrEnum
 
 @dataclass(frozen=True)
 class Description:
+    """Описание значения."""
+
     __slots__ = ("en", "ru")
 
     en: str
+    """На английском."""
     ru: str
+    """На русском."""
 
 
 class _DescriptionMixin:
@@ -28,19 +34,23 @@ class _DescriptionMixin:
 
 
 class IntEnumWithDescription(_DescriptionMixin, IntEnum):
-    pass
+    """Целочисленное перечисление с описанием значений."""
 
 
 class StrEnumWithDescription(_DescriptionMixin, StrEnum):
-    pass
+    """Строковое перечисление с описанием значений."""
 
 
 class WeatherDataType(StrEnumWithDescription):
+    """Тип данных: наблюдение или прогноз."""
+
     OBS = "Obs", "Observation", "Наблюдение"
     FRC = "Frc", "Forecast", "Прогноз"
 
 
 class CloudinessType(IntEnumWithDescription):
+    """Облачность."""
+
     SUNNY = 0, "Sunny", "Ясно"
     MOSTLY_SUNNY = 1, "Mostly sunny", "Малооблачно"
     MOSTLY_CLOUDY = 2, "Mostly cloudy", "Облачно"
@@ -49,6 +59,8 @@ class CloudinessType(IntEnumWithDescription):
 
 
 class PrecipitationType(IntEnumWithDescription):
+    """Тип осадков."""
+
     NO_PRECIPITATION = 0, "No precipitation", "Нет осадков"
     RAIN = 1, "Rain", "Дождь"
     SNOW = 2, "Snow", "Снег"
@@ -56,6 +68,8 @@ class PrecipitationType(IntEnumWithDescription):
 
 
 class PrecipitationIntensity(IntEnumWithDescription):
+    """Интенсивность осадков."""
+
     NO_PRECIPITATION = 0, "No precipitation", "Нет осадков"
     RAIN = 1, "Light rain / snow", "Небольшой дождь / снег"
     SNOW = 2, "Rain / snow", "Дождь / снег"
@@ -63,6 +77,8 @@ class PrecipitationIntensity(IntEnumWithDescription):
 
 
 class GeomagneticField(IntEnumWithDescription):
+    """Геомагнитная обстановка, от 1 до 8 баллов."""
+
     NO_SIGNIFICANT_DISTURBANCES = (
         1,
         "No significant disturbances",
@@ -102,6 +118,8 @@ class GeomagneticField(IntEnumWithDescription):
 
 
 class WindScale8(IntEnumWithDescription):
+    """Направление ветра по 8 румбам, 0 означает штиль."""
+
     CALM = 0, "Calm", "Штиль"
     NORTHERLY = 1, "Northerly", "Северный"
     NORTHEASTERLY = 2, "Northeasterly", "Северо-восточный"
@@ -114,6 +132,8 @@ class WindScale8(IntEnumWithDescription):
 
 
 class GeographicObjectType(StrEnumWithDescription):
+    """Тип географического объекта."""
+
     CITY = "T", "City", "Город"
     METROPOLIS = "C", "Metropolis", "Метрополис"
     AIRPORT = "A", "Airport", "Аэропорт"
