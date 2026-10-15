@@ -82,9 +82,9 @@ class Date(FrozenModel):
     """Дата и время."""
 
     utc: str = Field(alias="UTC")
-    """Время UTC."""
+    """Дата и время UTC, например `2025-10-14 14:00:00`."""
     local: str
-    """Местное время."""
+    """Местные дата и время, например `2025-10-14 17:00:00`."""
     time_zone_offset: int
     """Смещение местного времени от UTC, в минутах."""
     unix: int
@@ -95,7 +95,10 @@ class Radiation(FrozenModel):
     """Ультрафиолетовое излучение."""
 
     max: int | None = None
+    """Максимальный УФ-индекс в баллах, от 0 (низкий) до 11 и выше
+    (экстремальный)."""
     max_index: int | None = None
+    """То же, что `max`."""
 
 
 class Max(FrozenModel):
@@ -133,6 +136,7 @@ class Max1(FrozenModel):
 
 
 Min1 = Min
+"""То же, что `Min`."""
 
 
 class Water(FrozenModel):
@@ -152,6 +156,7 @@ class Max2(FrozenModel):
 
 
 Min2 = Min
+"""То же, что `Min`."""
 
 
 class Avg(FrozenModel):
@@ -279,9 +284,9 @@ class ModelItem(FrozenModel):
     city: int
     """ID географического объекта."""
     kind: enums.WeatherDataType | None = None
-    """Наблюдение или прогноз."""
+    """Больше не используется, всегда `None`."""
     storm: bool
-    """`True`, если ожидается гроза."""
+    """`True`, если вероятна гроза."""
     temperature: Temperature
     wind: Wind
     icon: str
