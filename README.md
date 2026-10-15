@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/monosans/pygismeteo-base/main/assets/logo.svg" alt="" width="96" align="right">
+
 # pygismeteo-base
 
 [![Downloads](https://static.pepy.tech/badge/pygismeteo-base)](https://pepy.tech/project/pygismeteo-base)
