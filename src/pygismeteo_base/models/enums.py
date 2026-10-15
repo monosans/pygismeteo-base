@@ -118,7 +118,7 @@ class GeomagneticField(IntEnumWithDescription):
 
 
 class WindScale8(IntEnumWithDescription):
-    """Направление ветра по 8 румбам; 0 — штиль."""
+    """Направление ветра по 8 румбам, 0 означает штиль."""
 
     CALM = 0, "Calm", "Штиль"
     NORTHERLY = 1, "Northerly", "Северный"

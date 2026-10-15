@@ -1,4 +1,4 @@
-"""Текущая погода. Ответ — `Model`."""
+"""Текущая погода. Ответ имеет тип `Model`."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Поиск по IP-адресу. Ответ — `Model`."""
+"""Поиск по IP-адресу. Ответ имеет тип `Model`."""
 
 from __future__ import annotations
 
