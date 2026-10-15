@@ -1,4 +1,4 @@
-"""Pydantic модели ответов Gismeteo API."""
+"""Pydantic-модели ответов Gismeteo API, неизменяемые и хешируемые."""
 
 from __future__ import annotations
 

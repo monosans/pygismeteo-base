@@ -1,3 +1,5 @@
+"""Поиск по IP-адресу. Ответ — `Model`."""
+
 from __future__ import annotations
 
 from pydantic import Field
@@ -17,14 +19,19 @@ class SubDistrict(FrozenModel):
 
 
 class Country(FrozenModel):
+    """Страна."""
+
     name: str
     code: str
     name_p: str = Field(alias="nameP")
 
 
 class Model(FrozenModel):
+    """Географический объект, к которому относится IP-адрес."""
+
     district: District | None = None
     id: int
+    """ID для запросов погоды."""
     sub_district: SubDistrict | None = None
     url: str
     name_p: str = Field(alias="nameP")

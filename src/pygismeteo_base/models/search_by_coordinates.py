@@ -1,3 +1,5 @@
+"""Поиск по координатам. Ответ — `Model`."""
+
 from __future__ import annotations
 
 from typing import TypeAlias
@@ -19,14 +21,19 @@ class SubDistrict(FrozenModel):
 
 
 class Country(FrozenModel):
+    """Страна."""
+
     name: str
     code: str
     name_p: str = Field(alias="nameP")
 
 
 class ModelItem(FrozenModel):
+    """Географический объект рядом с точкой."""
+
     district: District | None = None
     id: int
+    """ID для запросов погоды."""
     sub_district: SubDistrict | None = None
     url: str
     name_p: str = Field(alias="nameP")
@@ -37,3 +44,4 @@ class ModelItem(FrozenModel):
 
 
 Model: TypeAlias = tuple[ModelItem, ...]
+"""Ближайшие объекты."""

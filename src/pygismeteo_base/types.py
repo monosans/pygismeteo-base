@@ -11,7 +11,7 @@ Params: TypeAlias = MutableMapping[str, str]
 
 
 class Lang(StrEnum):
-    """Поддерживаемые Gismeteo API языки."""
+    """Язык названий и описаний в ответах."""
 
     RU = "ru"
     EN = "en"
@@ -23,17 +23,17 @@ class Lang(StrEnum):
 
 
 LocalityID: TypeAlias = Annotated[int, Field(ge=1)]
-"""ID географического объекта."""
+"""ID географического объекта из поиска."""
 Latitude: TypeAlias = Annotated[int | float, Field(ge=-90, le=90)]
-"""Широта."""
+"""Широта, от -90 до 90."""
 Longitude: TypeAlias = Annotated[int | float, Field(ge=-180, le=180)]
-"""Долгота."""
+"""Долгота, от -180 до 180."""
 SearchLimit: TypeAlias = Annotated[int, Field(ge=1, le=36)]
-"""Ограничение количества географических объектов у поиска по координатам."""
+"""Сколько объектов вернуть при поиске по координатам, от 1 до 36."""
 
 Step3Days: TypeAlias = Annotated[int, Field(ge=1, le=10)]
-"""Количество дней у погоды с шагом 3 часа."""
+"""Количество дней прогноза с шагом 3 часа, от 1 до 10."""
 Step6Days: TypeAlias = Annotated[int, Field(ge=3, le=10)]
-"""Количество дней у погоды с шагом 6 часов."""
+"""Количество дней прогноза с шагом 6 часов, от 3 до 10."""
 Step24Days: TypeAlias = Annotated[int, Field(ge=3, le=10)]
-"""Количество дней у погоды с шагом 24 часа."""
+"""Количество дней прогноза с шагом 24 часа, от 3 до 10."""
