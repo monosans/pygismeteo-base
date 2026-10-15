@@ -82,11 +82,11 @@ class Date(FrozenModel):
     """Дата и время."""
 
     utc: str = Field(alias="UTC")
-    """Время UTC."""
+    """Дата и время UTC, например `2025-10-14 14:00:00`."""
     time_zone_offset: int
     """Смещение местного времени от UTC, в минутах."""
     local: str
-    """Местное время."""
+    """Местные дата и время, например `2025-10-14 17:00:00`."""
     hr_to_forecast: int | None = None
     unix: int
     """Unix-время, в секундах."""
@@ -161,9 +161,9 @@ class ModelItem(FrozenModel):
     city: int
     """ID географического объекта."""
     kind: enums.WeatherDataType
-    """Наблюдение или прогноз."""
+    """Наблюдение или прогноз. Прогноз приходит, если нет данных наблюдений."""
     storm: bool
-    """`True`, если ожидается гроза."""
+    """`True`, если вероятна гроза."""
     temperature: Temperature
     description: Description
 
