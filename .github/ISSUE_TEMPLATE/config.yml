@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "🐍 Работа с pygismeteo"
+    url: https://github.com/monosans/pygismeteo/issues
+    about: >-
+      Задачи о синхронном клиенте ведутся в репозитории pygismeteo.
+  - name: "🐍 Работа с aiopygismeteo"
+    url: https://github.com/monosans/aiopygismeteo/issues
+    about: >-
+      Задачи об асинхронном клиенте ведутся в репозитории aiopygismeteo.
+  - name: 🔒 Сообщить об уязвимости
+    url: >-
+      https://github.com/monosans/pygismeteo-base/security/advisories/new
+    about: Сообщите о ней приватно, а не в открытой задаче.

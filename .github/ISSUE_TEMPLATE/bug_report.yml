@@ -1,0 +1,84 @@
+name: 🐛 Сообщение об ошибке
+description: >-
+  Модель отвергает ответ Gismeteo API или неверно описывает поле.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        pygismeteo-base — внутренняя библиотека для
+        [pygismeteo](https://github.com/monosans/pygismeteo) и
+        [aiopygismeteo](https://github.com/monosans/aiopygismeteo). Здесь
+        обсуждаются модели, а ошибки клиентов — в репозитории того клиента,
+        которым вы пользуетесь. У разработчика нет токена Gismeteo API,
+        поэтому особенно полезен ответ API.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Перед отправкой
+      options:
+        - label: >-
+            Среди [существующих
+            задач](https://github.com/monosans/pygismeteo-base/issues?q=is%3Aissue)
+            такой нет.
+          required: true
+        - label: >-
+            Ошибка воспроизводится на [последней
+            версии](https://pypi.org/project/pygismeteo-base/).
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Что случилось?"
+      description: Что вы делали, что ожидали и что получили.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Минимальный пример
+      description: >-
+        Самый короткий полный код, воспроизводящий ошибку. Не публикуйте
+        свой токен: замените его на `***`.
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Трейсбек
+      description: "Полный `pydantic.ValidationError`, если он возник."
+      render: python traceback
+  - type: textarea
+    id: api_response
+    attributes:
+      label: Ответ API
+      description: >-
+        JSON-ответ, который отвергает модель. Не публикуйте свой токен:
+        замените его на `***`.
+      render: json
+  - type: dropdown
+    id: client
+    attributes:
+      label: "Как вы используете библиотеку?"
+      options:
+        - Через pygismeteo
+        - Через aiopygismeteo
+        - Напрямую
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Версия pygismeteo-base
+      description: "`uv pip show pygismeteo-base` или `pip show pygismeteo-base`"
+    validations:
+      required: true
+  - type: input
+    id: python_version
+    attributes:
+      label: Версия Python
+      description: "`python --version`"
+      placeholder: 3.14.0
+    validations:
+      required: true

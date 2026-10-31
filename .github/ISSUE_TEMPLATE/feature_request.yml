@@ -1,0 +1,41 @@
+name: ✨ Предложение
+description: Предложите улучшение моделей pygismeteo-base.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Здесь только модели. Новые возможности клиентов предлагайте в
+        [pygismeteo](https://github.com/monosans/pygismeteo/issues) или
+        [aiopygismeteo](https://github.com/monosans/aiopygismeteo/issues).
+        Разработка приостановлена, поэтому предложение может остаться без
+        реализации.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Перед отправкой
+      options:
+        - label: >-
+            Среди [существующих
+            задач](https://github.com/monosans/pygismeteo-base/issues?q=is%3Aissue)
+            такой нет.
+          required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Проблема
+      description: "Что вы хотите сделать и что этому мешает?"
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Предлагаемое решение
+      description: "Что должно измениться? Опишите ожидаемое поведение."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативы
+      description: Обходные пути и другие варианты, которые вы рассматривали.
