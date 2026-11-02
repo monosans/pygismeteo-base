@@ -17,11 +17,7 @@ class SearchBase(EndpointABC[http.THttpClient]):
     @classmethod
     @validate_call(config={"arbitrary_types_allowed": True})
     def _get_params_by_coordinates(
-        cls,
-        latitude: types.Latitude,
-        longitude: types.Longitude,
-        *,
-        limit: types.SearchLimit,
+        cls, latitude: types.Latitude, longitude: types.Longitude, *, limit: types.SearchLimit
     ) -> tuple[str, dict[str, str]]:
         return cls._endpoint, {
             "latitude": str(latitude),
@@ -31,9 +27,7 @@ class SearchBase(EndpointABC[http.THttpClient]):
 
     @classmethod
     @validate_call(config={"arbitrary_types_allowed": True})
-    def _get_params_by_ip(
-        cls, ip: IPv4Address, /
-    ) -> tuple[str, dict[str, str]]:
+    def _get_params_by_ip(cls, ip: IPv4Address, /) -> tuple[str, dict[str, str]]:
         return cls._endpoint, {"ip": str(ip)}
 
     @classmethod

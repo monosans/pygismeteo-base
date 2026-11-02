@@ -16,11 +16,7 @@ class Step6Base(EndpointABC[http.THttpClient]):
     @classmethod
     @validate_call(config={"arbitrary_types_allowed": True})
     def _get_params_by_coordinates(
-        cls,
-        latitude: types.Latitude,
-        longitude: types.Longitude,
-        *,
-        days: types.Step6Days,
+        cls, latitude: types.Latitude, longitude: types.Longitude, *, days: types.Step6Days
     ) -> tuple[str, dict[str, str]]:
         return cls._endpoint, {
             "latitude": str(latitude),

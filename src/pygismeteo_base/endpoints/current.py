@@ -18,14 +18,9 @@ class CurrentBase(EndpointABC[http.THttpClient]):
     def _get_params_by_coordinates(
         cls, latitude: types.Latitude, longitude: types.Longitude
     ) -> tuple[str, dict[str, str]]:
-        return cls._endpoint, {
-            "latitude": str(latitude),
-            "longitude": str(longitude),
-        }
+        return cls._endpoint, {"latitude": str(latitude), "longitude": str(longitude)}
 
     @classmethod
     @validate_call(config={"arbitrary_types_allowed": True})
-    def _get_params_by_id(
-        cls, id_: types.LocalityID, /
-    ) -> tuple[str, dict[str, str]]:
+    def _get_params_by_id(cls, id_: types.LocalityID, /) -> tuple[str, dict[str, str]]:
         return f"{cls._endpoint}/{id_}", {}
