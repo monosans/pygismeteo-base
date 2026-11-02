@@ -15,12 +15,7 @@ class BaseHttpClient(Generic[T]):
 
     @validate_call(config={"arbitrary_types_allowed": True})
     def __init__(
-        self,
-        *,
-        token: str,
-        base_url: AnyHttpUrl,
-        lang: types.Lang,
-        session: T | None,
+        self, *, token: str, base_url: AnyHttpUrl, lang: types.Lang, session: T | None
     ) -> None:
         self.token: Final = SecretStr(token)
         self.base_url: Final = base_url
