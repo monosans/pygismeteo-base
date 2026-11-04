@@ -80,14 +80,14 @@ class PrecipitationIntensity(IntEnumWithDescription):
 class GeomagneticField(IntEnumWithDescription):
     """Геомагнитная обстановка, от 1 до 8 баллов."""
 
-    NO_SIGNIFICANT_DISTURBANCES = (1, "No significant disturbances", "Нет заметных возмущений")
+    NO_SIGNIFICANT_DISTURBANCES = 1, "No significant disturbances", "Нет заметных возмущений"
     SMALL_DISTURBANCES = 2, "Small disturbances", "Небольшие возмущения"
-    WEAK_GEOMAGNETIC_STORM = (3, "Weak geomagnetic storm", "Слабая геомагнитная буря")
-    MINOR_GEOMAGNETIC_STORM = (4, "Minor geomagnetic storm", "Малая геомагнитная буря")
-    MODERATE_GEOMAGNETIC_STORM = (5, "Moderate geomagnetic storm", "Умеренная геомагнитная буря")
-    STRONG_GEOMAGNETIC_STORM = (6, "Strong geomagnetic storm", "Сильная геомагнитная буря")
-    SEVERE_GEOMAGNETIC_STORM = (7, "Severe geomagnetic storm", "Жесткий геомагнитный шторм")
-    EXTREME_GEOMAGNETIC_STORM = (8, "Extreme geomagnetic storm", "Экстремальный шторм")
+    WEAK_GEOMAGNETIC_STORM = 3, "Weak geomagnetic storm", "Слабая геомагнитная буря"
+    MINOR_GEOMAGNETIC_STORM = 4, "Minor geomagnetic storm", "Малая геомагнитная буря"
+    MODERATE_GEOMAGNETIC_STORM = 5, "Moderate geomagnetic storm", "Умеренная геомагнитная буря"
+    STRONG_GEOMAGNETIC_STORM = 6, "Strong geomagnetic storm", "Сильная геомагнитная буря"
+    SEVERE_GEOMAGNETIC_STORM = 7, "Severe geomagnetic storm", "Жесткий геомагнитный шторм"
+    EXTREME_GEOMAGNETIC_STORM = 8, "Extreme geomagnetic storm", "Экстремальный шторм"
 
 
 class WindScale8(IntEnumWithDescription):
