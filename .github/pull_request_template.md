@@ -1,6 +1,10 @@
 <!--
 Pull request вливается через squash, поэтому заголовок пишется по Conventional Commits:
 `fix: ...`, `feat: ...`, `docs: ...`, `refactor: ...`, `test: ...`, `chore: ...`.
+
+Линтеры запускает CI. Чтобы поймать ошибки до пуша, запустите:
+
+uvx prek run --all-files
 -->
 
 ## Описание
@@ -17,6 +21,5 @@ Pull request вливается через squash, поэтому заголов
 
 ## Чек-лист
 
-- [ ] `uvx prek run --all-files` проходит.
 - [ ] Описания полей указывают единицы измерения, если их не видно из названия, и совпадают со спецификацией Gismeteo API v2.
 - [ ] [pygismeteo](https://github.com/monosans/pygismeteo) и [aiopygismeteo](https://github.com/monosans/aiopygismeteo) работают с этим изменением.
