@@ -9,6 +9,7 @@ authors = [{ name = "monosans", email = "hsyqixco@protonmail.com" }]
 classifiers = [
   "Framework :: Pydantic",
   "Framework :: Pydantic :: 2",
+  "Intended Audience :: Developers",
   "Natural Language :: Russian",
   "Operating System :: OS Independent",
   "Programming Language :: Python",
@@ -19,8 +20,12 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Programming Language :: Python :: 3.15",
   "Programming Language :: Python :: 3.16",
+  "Topic :: Scientific/Engineering :: Atmospheric Science",
+  "Topic :: Software Development :: Libraries :: Python Modules",
   "Typing :: Typed",
 ]
+urls.changelog = "https://github.com/monosans/pygismeteo-base/blob/main/CHANGELOG.md"
+urls.issues = "https://github.com/monosans/pygismeteo-base/issues"
 urls.repository = "https://github.com/monosans/pygismeteo-base"
 dependencies = ["pydantic>=2", "typing-extensions>=4.4"]
 dynamic = ["version"]
