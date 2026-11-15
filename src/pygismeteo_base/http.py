@@ -1,11 +1,16 @@
 from __future__ import annotations
 
+import sys
 from typing import Any, Final, Generic
 
 from pydantic import AnyHttpUrl, SecretStr, validate_call
-from typing_extensions import TypeVar
 
 from pygismeteo_base import types
+
+if sys.version_info >= (3, 13):
+    from typing import TypeVar
+else:
+    from typing_extensions import TypeVar
 
 T = TypeVar("T")
 
