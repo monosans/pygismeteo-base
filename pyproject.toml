@@ -27,7 +27,7 @@ classifiers = [
 urls.changelog = "https://github.com/monosans/pygismeteo-base/blob/main/CHANGELOG.md"
 urls.issues = "https://github.com/monosans/pygismeteo-base/issues"
 urls.repository = "https://github.com/monosans/pygismeteo-base"
-dependencies = ["pydantic>=2.5", "typing-extensions>=4.4"]
+dependencies = ["pydantic>=2.5", "typing-extensions>=4.6"]
 dynamic = ["version"]
 
 [dependency-groups]
