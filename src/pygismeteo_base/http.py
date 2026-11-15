@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import Any, Final, Generic, TypeVar
+from typing import Any, Final, Generic
 
 from pydantic import AnyHttpUrl, SecretStr, validate_call
+from typing_extensions import TypeVar
 
 from pygismeteo_base import types
 
